@@ -16,13 +16,14 @@ const FormSignup = () => {
       setPassword(event.target.value)
   };
 
-  const handleLogIn =async e =>{
+  const handleLogIn = e =>{
       e.preventDefault();
       const user={username, password}
       
-      axios.post("http://localhost:8080/auth", user)
-      .then(response => {const token  =  response.data.token})
-
+      axios.post("http://localhost:8080/auth", user).then((response)=>{
+        const token = response.data.token;
+        localStorage.setItem("token", token);
+      })
   
   };
 

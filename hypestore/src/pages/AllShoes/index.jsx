@@ -3,10 +3,12 @@ import EmptyView from '../../EmptyView';
 import SearchBar from '../../components/Home/SearchBar';
 import './styles.css';
 import ListShoes from '../../components/Home/List/ListShoes';
+import ListItem from '../../components/Home/List/ListItem';
 
 const ShoesPage = () => {
   const [resultsFound, setResultsFound] = useState(true);
   const [searchInput, setSearchInput] = useState('');
+  
    
   return (
     <div className='home'>

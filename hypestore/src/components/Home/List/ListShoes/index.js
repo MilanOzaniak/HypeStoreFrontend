@@ -3,6 +3,13 @@ import './styles.css';
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useParams
+} from "react-router-dom";
 
 const ListShoes = () => {
   const [item, setItem] = useState([]);
@@ -18,19 +25,18 @@ const ListShoes = () => {
   return(
 
     <div className='list-wrap'>
-    {item? (item.map((item) =>
+    {item? (item.map((data) =>
       {return (
-        <div className='listItem-wrap'>
-          <img className='img-box' src={item.imagePath} alt='' />
+        <div className='listItem-wrap' key={data.id}>
+            <Link to={`/shoes/${data.id}`}>
+              <img className='img-box' src={data.imagePath} alt=''/>
+            </Link>
           <header>
-            <h4>{item.title}</h4>
+            <h4>{data.title}</h4>
           </header>
           <footer>
-            <div class="inputfield">
-              <input type="submit" value="View Product" class="btn"></input>
-            </div>
             <p>
-              <b>${item.price}</b>
+              <b>${data.price}</b>
             </p>
           </footer>
         </div>

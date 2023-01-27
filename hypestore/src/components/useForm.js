@@ -1,8 +1,9 @@
 
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import validateInfo from '../data/validateInfo';
 
-const useForm = (callback, validate) => {
+const useForm = () => {
 
 
   const[userName, setUserName] = useState('')
@@ -36,26 +37,18 @@ const useForm = (callback, validate) => {
   };
 
   const handleSubmit = e => {
+    const user={userName, email, pnumber, password, password2}
     e.preventDefault();
-    
-    const user={userName, email, pnumber, password}
-    validate(user);
+    setErrors(validateInfo(userName, email, pnumber, password, password2));
+    console.log(errors);
+    console.log(user);
     axios.post("http://localhost:8080/register", user);
     console.log("preslo");
-    console.log(errors);
     setIsSubmitting(true)
 
   };
 
 
-  useEffect(
-    () => {
-      if (Object.keys(errors).length === 0 && isSubmitting) {
-        callback();
-      }
-    },
-    [errors]
-  );
 
   return {handleSubmit, errors, user, nameChangeHandler, emailChangeHandler, pNumberChangeHandler, passwordChangeHandler, passwordChangeHandler2 };
 };

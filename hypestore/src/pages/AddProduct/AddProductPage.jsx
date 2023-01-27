@@ -34,19 +34,19 @@ function AddProductPage() {
   const handleSubmit= e =>{
     e.preventDefault()
     const item={title, price, category, size, description}
-
+    const token = localStorage.getItem("token");
     let data = new FormData();
     var fileInput = document.getElementById("fileInput");
     data.append("image", fileInput.files[0]);
 
-    console.log(item)
+    console.log(token);
 
     axios.post("http://localhost:8080/item/uploadImage", data, {
-      headers:{"Authorization" : "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY3MzcyODE1NCwiaWF0IjoxNjczNzEwMTU0fQ.BE905zDgza1NO49dMgEZ0zOD2EBOljAY6vcbLzzWm9MjZU2N68WfZaeqCPAvuwdkox1kg7gj91H8BQt9YZ29mQ"}})
+      headers:{"Authorization" : `Bearer ${token}`}})
       .then(console.log("image uploaded"))
 
     axios.post("http://localhost:8080/item/create", item, {
-      headers:{"Authorization" : "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY3MzcyODE1NCwiaWF0IjoxNjczNzEwMTU0fQ.BE905zDgza1NO49dMgEZ0zOD2EBOljAY6vcbLzzWm9MjZU2N68WfZaeqCPAvuwdkox1kg7gj91H8BQt9YZ29mQ"}})
+      headers:{"Authorization" : `Bearer ${token}`}})
     .then(console.log("Item created"));
   }
     return (
