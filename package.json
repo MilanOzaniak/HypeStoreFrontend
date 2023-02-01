@@ -1,7 +1,7 @@
 {
   "name": "hypestore",
   "version": "0.1.0",
-  "homepage": "https://milanozaniak.github.io/hypestore",
+  "homepage": "https://milanozaniak.github.io/HypeStoreFrontEnd",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.9.0",
