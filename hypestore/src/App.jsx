@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Home from './pages/index';
+import Home from './pages/HomePage/index';
 import CurrentItem from './pages/currentItem';
 import SignUp from './pages/signup';
 import NaSi from './pages/NaSi';
@@ -11,6 +11,7 @@ import ShoesPage from './pages/AllShoes';
 import Formm from './components/Form1';
 import AccessoriesPage from './pages/AllAccessories';
 import ClothingPage from './pages/AllTshirts';
+import CurrentUserPage from './pages/CurrentUserPage';
 function App() {
   return (
     <Router>
@@ -27,6 +28,7 @@ function App() {
           <Route exact path="/clothing/:id"><CurrentItem/></Route>
           <Route exact path="/:id"><CurrentItem/></Route>
           <Route exact path="/user/:userName"><UserPage/></Route>
+          <Route exact path="/currentUser/:userName"><CurrentUserPage/></Route>
         </Switch>
     </Router> 
   );

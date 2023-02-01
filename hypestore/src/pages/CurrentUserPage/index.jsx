@@ -2,7 +2,8 @@ import React from "react";
 import { useEffect } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
-import image from '../../images/pic.png'
+import './styles.css'
+import image from './../../images/pic.png'
 import {
     BrowserRouter as Router,
     Link,
@@ -11,15 +12,18 @@ import {
     useParams,
   } from "react-router-dom";
 
-const UserPage = () =>{
-    const { userName } = useParams();
+const CurrentUserPage = () =>{
     const [currentUser, setCurrentUser] = useState('');
+    const userName = localStorage.getItem("userName");
+    
 
     useEffect( () =>{
         axios.get("http://localhost:8080/user/getUser/" + userName).then((response)=>{
             setCurrentUser(response.data);
         })
     }, [])
+
+    console.log(currentUser);
 
     return(
         <div>
@@ -41,7 +45,7 @@ const UserPage = () =>{
                             </div>
                         </div>
                         <div className="Profile-Description">
-                            <a >{currentUser.description}</a>
+                            <input placeholder={currentUser.description}></input>
                         </div>
                     </div>
                 </div>
@@ -69,4 +73,4 @@ const UserPage = () =>{
         </div>
     );
 }
-export default UserPage;
+export default CurrentUserPage;

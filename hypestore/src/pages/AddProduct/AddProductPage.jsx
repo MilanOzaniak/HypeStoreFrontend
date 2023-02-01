@@ -2,6 +2,7 @@ import React from 'react';
 import './style.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function AddProductPage() {
   const[id, setId] = useState('')
@@ -39,44 +40,45 @@ function AddProductPage() {
     var fileInput = document.getElementById("fileInput");
     data.append("image", fileInput.files[0]);
 
-    console.log(token);
-
     axios.post("http://localhost:8080/item/uploadImage", data, {
       headers:{"Authorization" : `Bearer ${token}`}})
       .then(console.log("image uploaded"))
 
     axios.post("http://localhost:8080/item/create", item, {
       headers:{"Authorization" : `Bearer ${token}`}})
-    .then(console.log("Item created"));
+    .then(
+      console.log("Item created"),
+      console.log(data)
+      );
   }
     return (
 
-      <div class="wrapper">
-        <div class="title">
+      <div className="wrapper">
+        <div className="title">
             Add Product
         </div>
-        <div class="form">
-            <div class="inputfield">
+        <div className="form">
+            <div className="inputfield">
                 <label>Title</label>
                 <input 
                   type="text"
-                  class="input"
+                  className="input"
                   value={title}
                   onChange={titleChangeHandler}>
                 </input>
           </div>  
-          <div class="inputfield">
+          <div className="inputfield">
             <label>Price</label>
               <input
                 type="text" 
-                class="input" 
+                className="input" 
                 value={price} 
                 onChange={priceChangeHandler}>
               </input>
         </div>   
-          <div class="inputfield">
+          <div className="inputfield">
             <label>Category</label>
-              <div class="custom_select">
+              <div className="custom_select">
                 <select 
                   value={category}
                   onChange={categoryChangeHandler}>
@@ -84,16 +86,16 @@ function AddProductPage() {
                   <option 
                     value={"Shoes"}>Shoes</option>
                   <option
-                    value={"Clothes"}>Clothing</option>
+                    value={"Clothing"}>Clothing</option>
                   <option 
                     value={"Accessories"}>Accessories</option>
                 </select>
               </div>
           </div> 
 
-          <div class="inputfield">
+          <div className="inputfield">
             <label>Size</label>
-              <div class="custom_select" >
+              <div className="custom_select" >
                 <select label="Select"
                   value={size}
                   onChange={sizeChangeHandler}>
@@ -133,7 +135,7 @@ function AddProductPage() {
             <input id="fileInput" type="file" />
           </div>
           <div class="inputfield">
-            <input type="submit" value="Create Item" class="btn" onClick={handleSubmit}></input>
+              <input type="submit" value="Create Item" className="btn" onClick={handleSubmit}></input>
           </div>
         </div>
       </div>

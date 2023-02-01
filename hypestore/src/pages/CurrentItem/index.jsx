@@ -64,13 +64,13 @@ const CurrentItemPage = () =>{
                             </div>
                             <div className='profileInfo'>
                                 <div className="Name">
-                                    <Link to={`/user/${currentUser.userName}`}><h7>{currentUser.userName}</h7></Link>
+                                    <Link to={`/user/${currentUser.userName}`}><a>{currentUser.userName}</a></Link>
                                 </div>
                                 <div className="Phonenumber">
-                                    <h7>{currentUser.pnumber}</h7>
+                                    <a>{currentUser.pnumber}</a>
                                 </div>
                                 <div className="Email">
-                                    <h7>{currentUser.email}</h7>
+                                    <a>{currentUser.email}</a>
                                 </div>
                             </div>
                         </div>

@@ -31,14 +31,8 @@ const ListClothing = () => {
             <Link to={`/clothing/${data.id}`}>
               <img className='img-box' src={data.imagePath} alt=''/>
             </Link>
-          <header>
             <h4>{data.title}</h4>
-          </header>
-          <footer>
-            <p>
-              <b>${data.price}</b>
-            </p>
-          </footer>
+            <b>${data.price}</b>
         </div>
       )})) : (<h3>No data yet</h3>)}
     </div>

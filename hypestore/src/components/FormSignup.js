@@ -1,7 +1,9 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Link } from "react-router-dom";
 import axios from 'axios';
 import '../App.css';
+
 
 const FormSignup = () => {
   const[username, setUserName] = useState('')
@@ -16,21 +18,27 @@ const FormSignup = () => {
       setPassword(event.target.value)
   };
 
-  const handleLogIn = e =>{
-      e.preventDefault();
-      const user={username, password}
+  const handleLogIn = event =>{
+      event.preventDefault();
+      const user={username, password};
+
       
       axios.post("http://localhost:8080/auth", user).then((response)=>{
         const token = response.data.token;
+        console.log(response.data);
         localStorage.setItem("token", token);
+        localStorage.setItem("userName", username);
+      }).then(() =>{
+        window.location.reload(false);
       })
   
   };
 
 
+
   return (
     <div className='form-content'>
-      <form onSubmit={handleLogIn} className='form' noValidate>
+      <div  className='form' >
         <h1>
           LOGIN
         </h1>
@@ -58,13 +66,13 @@ const FormSignup = () => {
           />
 
         </div>
-        <button className='form-input-btn' type='submit'>
-          Sign up
-        </button>
+        <Link to='/' className='form-input-btn' onClick={handleLogIn} >  
+          Log in
+        </Link>
         <span className='form-input-login'>
           You dont have an account? Register <a href='/Register'>here.</a>
         </span>
-      </form>
+      </div>
     </div>
   );
 };

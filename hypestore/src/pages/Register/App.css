@@ -148,9 +148,6 @@
   border: none;
   color: #fff;
   font-size: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .form-input-btn:hover {
