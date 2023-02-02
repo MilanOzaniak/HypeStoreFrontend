@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/HypeStoreFrontEnd/static/css/main.9ec3198e.css",
-    "main.js": "/HypeStoreFrontEnd/static/js/main.33245ad3.js",
-    "static/js/787.d7232bc1.chunk.js": "/HypeStoreFrontEnd/static/js/787.d7232bc1.chunk.js",
-    "static/media/streetwear2.jpg": "/HypeStoreFrontEnd/static/media/streetwear2.613ee6f18f67a4515ced.jpg",
-    "static/media/streetwear.jpg": "/HypeStoreFrontEnd/static/media/streetwear.e60013eacdacbf448f92.jpg",
-    "static/media/streetwear3.jpg": "/HypeStoreFrontEnd/static/media/streetwear3.18454b4f0225699a75e0.jpg",
-    "static/media/pic.png": "/HypeStoreFrontEnd/static/media/pic.7a6a6c54279a54d1977c.png",
-    "index.html": "/HypeStoreFrontEnd/index.html",
-    "main.9ec3198e.css.map": "/HypeStoreFrontEnd/static/css/main.9ec3198e.css.map",
-    "main.33245ad3.js.map": "/HypeStoreFrontEnd/static/js/main.33245ad3.js.map",
-    "787.d7232bc1.chunk.js.map": "/HypeStoreFrontEnd/static/js/787.d7232bc1.chunk.js.map"
+    "main.css": "/HypeStoreFrontend/static/css/main.9ec3198e.css",
+    "main.js": "/HypeStoreFrontend/static/js/main.9d54672a.js",
+    "static/js/787.d7232bc1.chunk.js": "/HypeStoreFrontend/static/js/787.d7232bc1.chunk.js",
+    "static/media/streetwear2.jpg": "/HypeStoreFrontend/static/media/streetwear2.613ee6f18f67a4515ced.jpg",
+    "static/media/streetwear.jpg": "/HypeStoreFrontend/static/media/streetwear.e60013eacdacbf448f92.jpg",
+    "static/media/streetwear3.jpg": "/HypeStoreFrontend/static/media/streetwear3.18454b4f0225699a75e0.jpg",
+    "static/media/pic.png": "/HypeStoreFrontend/static/media/pic.7a6a6c54279a54d1977c.png",
+    "index.html": "/HypeStoreFrontend/index.html",
+    "main.9ec3198e.css.map": "/HypeStoreFrontend/static/css/main.9ec3198e.css.map",
+    "main.9d54672a.js.map": "/HypeStoreFrontend/static/js/main.9d54672a.js.map",
+    "787.d7232bc1.chunk.js.map": "/HypeStoreFrontend/static/js/787.d7232bc1.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9ec3198e.css",
-    "static/js/main.33245ad3.js"
+    "static/js/main.9d54672a.js"
   ]
 }
