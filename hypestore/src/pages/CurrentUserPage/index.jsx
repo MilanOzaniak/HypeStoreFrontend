@@ -2,19 +2,14 @@ import React from "react";
 import { useEffect } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
-import './styles.css'
-import image from './../../images/pic.png'
-import {
-    BrowserRouter as Router,
-    Link,
-    Route,
-    Routes,
-    useParams,
-  } from "react-router-dom";
+import './styles.css';
+import image from './../../images/pic.png';
+import { Link } from "react-router-dom";
 
 const CurrentUserPage = () =>{
     const [currentUser, setCurrentUser] = useState('');
     const userName = localStorage.getItem("userName");
+    const token = localStorage.getItem("token");
     
 
     useEffect( () =>{
@@ -22,6 +17,14 @@ const CurrentUserPage = () =>{
             setCurrentUser(response.data);
         })
     }, [])
+
+    function handleDelete (e) {
+        axios.get("http://localhost:8080/item/del/" + e, {headers:{"Authorization" : `Bearer ${token}`}})
+        .then(()=>{
+            window.location.reload(false);
+        })
+        
+    }
 
     console.log(currentUser);
 
@@ -58,14 +61,13 @@ const CurrentUserPage = () =>{
                         <Link to={`/clothing/${data.id}`}>
                             <img className='img-box' src={data.imagePath} alt=''/>
                         </Link>
-                        <header>
-                            <h4>{data.title}</h4>
-                        </header>
-                        <footer>
-                            <p>
+                        <div className="description">
+                            <div className="info">
+                                <h4>{data.title}</h4>
                                 <b>${data.price}</b>
-                            </p>
-                        </footer>
+                            </div>
+                            <button className= "close" onClick={() => handleDelete(data.id)}>X</button>
+                        </div>
                      </div>
                 )})) : (<h3>No data yet</h3>)}
             </div>

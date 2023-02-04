@@ -35,3 +35,11 @@
     border: 1px solid gray; 
     height:100px;
 }
+
+.description{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+

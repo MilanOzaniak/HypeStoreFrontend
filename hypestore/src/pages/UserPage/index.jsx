@@ -3,13 +3,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
 import image from '../../images/pic.png'
-import {
-    BrowserRouter as Router,
-    Link,
-    Route,
-    Routes,
-    useParams,
-  } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const UserPage = () =>{
     const { userName } = useParams();

@@ -1,6 +1,6 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { useState } from 'react';
+import { Link } from "react-router-dom";
 import axios from 'axios';
 import '../App.css';
 
@@ -18,8 +18,7 @@ const FormSignup = () => {
       setPassword(event.target.value)
   };
 
-  const handleLogIn = event =>{
-      event.preventDefault();
+  function handleLogIn (){
       const user={username, password};
 
       

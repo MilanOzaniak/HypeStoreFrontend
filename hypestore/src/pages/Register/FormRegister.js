@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import './App.css'
 import axios from 'axios';
 import validateInfo from '../../data/validateInfo';
+import { Link } from 'react-router-dom';
 
 const FormSignup = () => {
 
@@ -36,14 +37,10 @@ const FormSignup = () => {
     setPassword2(event.target.value)
   };
 
-  const handleSubmit = e => {
+  function handleSubmit() {
     const user={userName, email, pnumber, password, password2}
-    e.preventDefault();
     setErrors(validateInfo(userName, email, pnumber, password, password2));
-    console.log(errors);
-    console.log(user);
     axios.post("http://localhost:8080/register", user);
-    console.log("preslo");
     setIsSubmitting(true)
 
   };
@@ -123,9 +120,9 @@ const FormSignup = () => {
           {errors.password2 && <p>{errors.password2}</p>}
         </div>
 
-        <button className='form-input-btn' type='submit' onClick={handleSubmit}>
+        <Link to={'/Signup'} className='form-input-btn' type='submit' onClick={handleSubmit}>
           Register
-        </button>
+        </Link>
 
         <span className='form-input-login'>
           Already have an account? Login <a href='/Signup'>here</a>

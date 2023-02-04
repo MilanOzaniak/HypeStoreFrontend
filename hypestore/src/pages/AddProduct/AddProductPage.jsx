@@ -1,18 +1,15 @@
 import React from 'react';
 import './style.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 function AddProductPage() {
-  const[id, setId] = useState('')
   const[title, setTitle] = useState('')
   const[description, setDescription] = useState('')
   const[size, setSize] = useState('')
   const[price, setPrice] = useState('')
   const[category, setCategory] = useState('')
-  const[image, setImage] = useState('')
-  const[item,setItem]=useState([])
 
   var fileInput = document.getElementById("fileInput");
 
@@ -32,8 +29,7 @@ function AddProductPage() {
     setCategory(event.target.value)
   }
 
-  const handleSubmit= e =>{
-    e.preventDefault()
+  function handleSubmit(){
     const item={title, price, category, size, description}
     const token = localStorage.getItem("token");
     let data = new FormData();
@@ -123,19 +119,19 @@ function AddProductPage() {
                 </select>
              </div>
           </div> 
-          <div class="inputfield">
+          <div className="inputfield">
             <label>Decsription</label>
             <textarea 
-              class="textarea"
+              className="textarea"
               value={description}
               onChange={descriptionChangeHandler}>
             </textarea>
           </div>
-          <div class="multipart">
+          <div className="multipart">
             <input id="fileInput" type="file" />
           </div>
-          <div class="inputfield">
-              <input type="submit" value="Create Item" className="btn" onClick={handleSubmit}></input>
+          <div className="inputfield">
+              <input to={'/'} type="submit" value="Create Item" className="btn" onClick={handleSubmit}></input>
           </div>
         </div>
       </div>

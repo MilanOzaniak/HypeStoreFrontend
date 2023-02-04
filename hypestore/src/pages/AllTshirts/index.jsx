@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import EmptyView from '../../EmptyView';
 import SearchBar from '../../components/Home/SearchBar';
 import './styles.css';

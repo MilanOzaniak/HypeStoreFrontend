@@ -3,13 +3,7 @@ import './styles.css';
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useParams
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const ListAccessories = () => {
   const [item, setItem] = useState([]);

@@ -4,20 +4,16 @@ import pic from "./../../images/pic.png"
 import { useEffect } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
-import {
-    BrowserRouter as Router,
-    Link,
-    Route,
-    Routes,
-    useParams,
-  } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 
 const CurrentItemPage = () =>{
     const { id } = useParams();
     const [currentItem, setCurrentItem] = useState('');
-    const [userName, setUserName] = useState('');
-    const [currentUser, setCurrentUser] = useState('');
+    const [user, setUser] = useState('');
+    const token = localStorage.getItem("token");
+    const currentUser = localStorage.getItem("userName");
+    const [isAdmin] = useState(currentUser === "admin");
 
     useEffect (async () =>{
         await axios.get("http://localhost:8080/item/getItem/" + id).then((response) =>{
@@ -26,10 +22,18 @@ const CurrentItemPage = () =>{
 
         }).then(info => {
             axios.get("http://localhost:8080/user/getUser/" + info).then((response)=>{
-                setCurrentUser(response.data);
+                setUser(response.data);
             })
         })
     }, [])
+
+    function handleDelete (e) {
+        axios.get("http://localhost:8080/item/del/" + e, {headers:{"Authorization" : `Bearer ${token}`}})
+        .then(()=>{
+            window.location.reload(false);
+        })
+        
+    }
 
 
 
@@ -55,6 +59,9 @@ const CurrentItemPage = () =>{
                         </div>
                         <div className="Product-Price">
                             <h2>{currentItem.price}<small>€</small></h2>
+                            <div className='' style={{display: isAdmin? 'block' : 'none'}}>
+                                <Link to={'/'} className='delete' onClick={()=>{handleDelete(id)}}>X</Link>
+                            </div>
                         </div>
                         <div className='profile'>
                             <div className="profilePic">
@@ -64,13 +71,13 @@ const CurrentItemPage = () =>{
                             </div>
                             <div className='profileInfo'>
                                 <div className="Name">
-                                    <Link to={`/user/${currentUser.userName}`}><a>{currentUser.userName}</a></Link>
+                                    <Link to={`/user/${user.userName}`}><a>{user.userName}</a></Link>
                                 </div>
                                 <div className="Phonenumber">
-                                    <a>{currentUser.pnumber}</a>
+                                    <a>{user.pnumber}</a>
                                 </div>
                                 <div className="Email">
-                                    <a>{currentUser.email}</a>
+                                    <a>{user.email}</a>
                                 </div>
                             </div>
                         </div>

@@ -12,6 +12,7 @@ import Formm from './components/Form1';
 import AccessoriesPage from './pages/AllAccessories';
 import ClothingPage from './pages/AllTshirts';
 import CurrentUserPage from './pages/CurrentUserPage';
+import Footer from './components/Footer/Footer'
 function App() {
   return (
     <Router>
@@ -23,13 +24,14 @@ function App() {
           <Route exact path='/accessories'> <AccessoriesPage/> </Route>
           <Route path='/signup'> <SignUp/> </Route>
           <Route path='/register'> <Formm/> </Route>
-          <Route path='/createitempage'><AddProductPage/> </Route>
+          <Route exact path='/createitempage'><AddProductPage/> </Route>
           <Route exact path="/shoes/:id"><CurrentItem/></Route>
           <Route exact path="/clothing/:id"><CurrentItem/></Route>
           <Route exact path="/:id"><CurrentItem/></Route>
           <Route exact path="/user/:userName"><UserPage/></Route>
           <Route exact path="/currentUser/:userName"><CurrentUserPage/></Route>
         </Switch>
+      <Footer/>
     </Router> 
   );
 };
