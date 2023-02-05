@@ -29,7 +29,8 @@ function AddProductPage() {
     setCategory(event.target.value)
   }
 
-  function handleSubmit(){
+  const handleSubmit =(e) =>{
+    e.preventDefault();
     const item={title, price, category, size, description}
     const token = localStorage.getItem("token");
     let data = new FormData();
@@ -48,7 +49,6 @@ function AddProductPage() {
       );
   }
     return (
-
       <div className="wrapper">
         <div className="title">
             Add Product

@@ -87,13 +87,13 @@ const Navbar = ({toogle}) => {
               </li>
               <div className='dropdown-content'>
                 <Link to={`/currentUser/${currentUser}`} >Profile</Link>
-                <Link to={'/'} onClick={handleLogOut}>Log Out</Link>
+                <Link to='/' onClick={handleLogOut}>Log Out</Link>
               </div>
             </div>
           </div>
         </ul>
 
-        <div className='addproduct-button'>
+        <div className='addproduct-button' style={{display: isVisible? 'none' : 'block'}}>
           <Link to={'/createitempage'} className='btn'>
             Add product
           </Link>
