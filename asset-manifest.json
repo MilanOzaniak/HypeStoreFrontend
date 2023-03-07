@@ -1,19 +1,22 @@
 {
   "files": {
-    "main.css": "/HypeStoreFrontend/static/css/main.9ec3198e.css",
-    "main.js": "/HypeStoreFrontend/static/js/main.9d54672a.js",
+    "main.css": "/HypeStoreFrontend/static/css/main.1997a23c.css",
+    "main.js": "/HypeStoreFrontend/static/js/main.83f2fa89.js",
     "static/js/787.d7232bc1.chunk.js": "/HypeStoreFrontend/static/js/787.d7232bc1.chunk.js",
     "static/media/streetwear2.jpg": "/HypeStoreFrontend/static/media/streetwear2.613ee6f18f67a4515ced.jpg",
     "static/media/streetwear.jpg": "/HypeStoreFrontend/static/media/streetwear.e60013eacdacbf448f92.jpg",
     "static/media/streetwear3.jpg": "/HypeStoreFrontend/static/media/streetwear3.18454b4f0225699a75e0.jpg",
-    "static/media/pic.png": "/HypeStoreFrontend/static/media/pic.7a6a6c54279a54d1977c.png",
+    "static/media/pic.png": "/HypeStoreFrontend/static/media/pic.576e7907f511285efe5b.png",
+    "static/media/revicons.eot": "/HypeStoreFrontend/static/media/revicons.a77de540a38981833f9e.eot",
+    "static/media/revicons.ttf": "/HypeStoreFrontend/static/media/revicons.57fd05d4ae650374c8de.ttf",
+    "static/media/revicons.woff": "/HypeStoreFrontend/static/media/revicons.e8746a624ed098489406.woff",
     "index.html": "/HypeStoreFrontend/index.html",
-    "main.9ec3198e.css.map": "/HypeStoreFrontend/static/css/main.9ec3198e.css.map",
-    "main.9d54672a.js.map": "/HypeStoreFrontend/static/js/main.9d54672a.js.map",
+    "main.1997a23c.css.map": "/HypeStoreFrontend/static/css/main.1997a23c.css.map",
+    "main.83f2fa89.js.map": "/HypeStoreFrontend/static/js/main.83f2fa89.js.map",
     "787.d7232bc1.chunk.js.map": "/HypeStoreFrontend/static/js/787.d7232bc1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9ec3198e.css",
-    "static/js/main.9d54672a.js"
+    "static/css/main.1997a23c.css",
+    "static/js/main.83f2fa89.js"
   ]
 }
