@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.css';
+import './AddProductPage.css';
 import { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -10,8 +10,9 @@ function AddProductPage() {
   const[size, setSize] = useState('')
   const[price, setPrice] = useState('')
   const[category, setCategory] = useState('')
-
-  var fileInput = document.getElementById("fileInput");
+  const[files, setFiles] = useState('')
+  const url = localStorage.getItem("url");
+  let imageNames = [];
 
   const titleChangeHandler = event => {
     setTitle(event.target.value)
@@ -29,23 +30,37 @@ function AddProductPage() {
     setCategory(event.target.value)
   }
 
-  const handleSubmit =(e) =>{
-    e.preventDefault();
-    const item={title, price, category, size, description}
+  const fileChangeHandler = event => {
+    if (Array.from(event.target.files).length > 5) {
+      alert(`Cannot upload files more than 5`);
+      return;
+    }
+    setFiles(event.target.files)
+  }
+
+  function handleSubmit(){
     const token = localStorage.getItem("token");
     let data = new FormData();
-    var fileInput = document.getElementById("fileInput");
-    data.append("image", fileInput.files[0]);
+    for(let i = 0; i < files.length; i++){
+      data.append("images", files[i]);
+      imageNames[i] = files[i].name;
+    }
 
-    axios.post("http://localhost:8080/item/uploadImage", data, {
+
+    const item={title, price, category, size, description, imageNames};
+    //window.location.href = "/";
+
+    axios.post(url + "/item/upload", data, {
       headers:{"Authorization" : `Bearer ${token}`}})
-      .then(console.log("image uploaded"))
+      .then(
+        console.log("image uploaded" ),
+        data.delete("image"))
 
-    axios.post("http://localhost:8080/item/create", item, {
+    axios.post(url + "/item/create", item, {
       headers:{"Authorization" : `Bearer ${token}`}})
     .then(
       console.log("Item created"),
-      console.log(data)
+      console.log(item)
       );
   }
     return (
@@ -128,10 +143,10 @@ function AddProductPage() {
             </textarea>
           </div>
           <div className="multipart">
-            <input id="fileInput" type="file" />
+            <input id="fileInput" type="file" multiple onChange={fileChangeHandler}/>
           </div>
           <div className="inputfield">
-              <input to={'/'} type="submit" value="Create Item" className="btn" onClick={handleSubmit}></input>
+              <input type="submit" value="Create Item" className="btn1" onClick={handleSubmit}></input>
           </div>
         </div>
       </div>

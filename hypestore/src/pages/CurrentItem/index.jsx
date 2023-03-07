@@ -1,10 +1,11 @@
 import React from 'react';
-import './styles.css';
+import './CurrentItem.css';
 import pic from "./../../images/pic.png"
 import { useEffect } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
 import { Link, useParams } from "react-router-dom";
+import {FiMoreVertical} from "react-icons/fi";
 
 
 const CurrentItemPage = () =>{
@@ -14,59 +15,71 @@ const CurrentItemPage = () =>{
     const token = localStorage.getItem("token");
     const currentUser = localStorage.getItem("userName");
     const [isAdmin] = useState(currentUser === "admin");
+    const url = localStorage.getItem("url");
+    let images = [];
 
     useEffect (async () =>{
-        await axios.get("http://localhost:8080/item/getItem/" + id).then((response) =>{
+        await axios.get(url + "/item/getItem/" + id).then((response) =>{
             setCurrentItem(response.data);
+            images = response.data.imageNames;
             return response.data.userName;
 
         }).then(info => {
-            axios.get("http://localhost:8080/user/getUser/" + info).then((response)=>{
+            axios.get(url + "/user/getUser/" + info).then((response)=>{
                 setUser(response.data);
             })
         })
     }, [])
 
+
     function handleDelete (e) {
-        axios.get("http://localhost:8080/item/del/" + e, {headers:{"Authorization" : `Bearer ${token}`}})
+        axios.get(url + "/item/del/" + e, {headers:{"Authorization" : `Bearer ${token}`}})
         .then(()=>{
             window.location.reload(false);
         })
-        
     }
 
-
-
     return (
-
         <body>
             <section>
                 <div className="container flex">
+                    <div className='' style={{display: isAdmin? 'block' : 'none'}}>
+                        <Link to={'/'} className='delete' onClick={()=>{handleDelete(id)}}>X</Link>
+                    </div>
+                    <div className='more' style={{display: user? 'block' : 'none'}}>
+                        <FiMoreVertical/>
+                    </div>
                     <div className="left">
-                        <div className="main_image">
-                            <img src={currentItem.imagePath} alt=""></img>
+                    <div className="main_image1">
+                        <img src={currentItem.imageNames ? url +"/item/getImage/" + currentItem.imageNames[0] : null} alt="" className="main_img"></img>
+                    </div>
+                    <div className="option flex">
+                            <img src={currentItem.imageNames ? url +"/item/getImage/" + currentItem.imageNames[1] : null} alt=""className="main_imgg"></img>  
+                            <img src={currentItem.imageNames ? url +"/item/getImage/" + currentItem.imageNames[2] : null} alt=""className="main_imgg"></img>
+                            <img src={currentItem.imageNames ? url +"/item/getImage/" + currentItem.imageNames[3] : null} alt=""className="main_imgg"></img>
+                            <img src={currentItem.imageNames ? url +"/item/getImage/" + currentItem.imageNames[3] : null} alt=""className="main_imgg"></img>
                         </div>
                     </div>
                     <div className="right"> 
-                        <div class="Product-Date">
-                            <h6>{"Pridané " + currentItem.date}</h6>
+                        <div className="Product-Date">
+                            {"Pridané " + currentItem.date}
                         </div>
                         <div className="Product-Title">
-                            <h1>{currentItem.title}</h1>
+                            {currentItem.title}
                         </div>
                         <div className="Product-Info">
-                            <p>{currentItem.description} </p>
+                            {currentItem.description} 
+                        </div>
+                        <div className="Product-Size">
+                            Size: {currentItem.size}
                         </div>
                         <div className="Product-Price">
-                            <h2>{currentItem.price}<small>€</small></h2>
-                            <div className='' style={{display: isAdmin? 'block' : 'none'}}>
-                                <Link to={'/'} className='delete' onClick={()=>{handleDelete(id)}}>X</Link>
-                            </div>
+                            {currentItem.price}<small>€</small>
                         </div>
                         <div className='profile'>
                             <div className="profilePic">
                                 <div className='pic'>
-                                    <img src={pic}/> 
+                                    <img src={url + "/user/getImage/" + user.profileImage} className="profile_picture"/> 
                                 </div>
                             </div>
                             <div className='profileInfo'>

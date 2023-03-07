@@ -8,34 +8,32 @@ import { Link, useParams } from "react-router-dom";
 const UserPage = () =>{
     const { userName } = useParams();
     const [currentUser, setCurrentUser] = useState('');
+    const url = localStorage.getItem("url");
 
     useEffect( () =>{
-        axios.get("http://localhost:8080/user/getUser/" + userName).then((response)=>{
+        axios.get(url + "/user/getUser/" + userName).then((response)=>{
             setCurrentUser(response.data);
         })
     }, [])
 
     return(
         <div>
-            <div className='container'>
-                <div className='profile-details'>
-                    <div className='pd-row'>
-                        <div className='left'>
-                            <img src={image} className='pd-image'></img>
+            <div className='container1'>
+                <div className='profile-details1'>
+                    <div className='pd-row1'>
+                        <div className='left1'>
+                            <img src={url + "/user/getImage/" + currentUser.profileImage} className='pd-image1'></img>
                         </div>
-                        <div className='right'>
-                            <div className='Profile-Info'>
+                        <div className='right1'>
+                            <div className='Profile-Info1'>
                                 <h3>{currentUser.userName}</h3>
                             </div>
-                            <div className='Profile-Email'>
+                            <div className='Profile-Email1'>
                                 <h3>{currentUser.email}</h3>
                             </div>
-                            <div className='Profile-Number'>
+                            <div className='Profile-Number1'>
                                 <h3>{currentUser.pnumber}</h3>
                             </div>
-                        </div>
-                        <div className="Profile-Description">
-                            <a >{currentUser.description}</a>
                         </div>
                     </div>
                 </div>
@@ -46,7 +44,7 @@ const UserPage = () =>{
                     {return (
                     <div className='listItem-wrap' key={data.id}>
                         <Link to={`/clothing/${data.id}`}>
-                            <img className='img-box' src={data.imagePath} alt=''/>
+                            <img className='img-box' src={data.imageNames ? url + "/item/getImage/" + data.imageNames[0] : null} alt=''/>
                         </Link>
                         <header>
                             <h4>{data.title}</h4>
