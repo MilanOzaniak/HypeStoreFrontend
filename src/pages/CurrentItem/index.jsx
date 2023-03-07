@@ -1,6 +1,5 @@
 import React from 'react';
 import './CurrentItem.css';
-import pic from "./../../images/pic.png"
 import { useEffect } from 'react';
 import { useState } from 'react';
 import axios from 'axios';

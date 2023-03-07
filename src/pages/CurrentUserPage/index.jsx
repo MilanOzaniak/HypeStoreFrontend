@@ -3,9 +3,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
 import './CurrentUserPage.css';
-import image from './../../images/pic.png';
 import { Link } from "react-router-dom";
-import {FiMoreVertical} from "react-icons/fi";
 import ProfileImage from "../../components/ProfilImage";
 
 const CurrentUserPage = () =>{
