@@ -6,7 +6,7 @@ import ListItem from '../../components/Home/List/ListItem';
 import Slider from '../../components/ProductSlider/Slider';
 
 const Home = () => {
-  const url = "https://hypestorebackend-production-4dcc.up.railway.app";
+  const url = "hypestorebackend-production.up.railway.app";
   localStorage.setItem("url", url);
 
   return (
