@@ -2,7 +2,8 @@ import React from 'react';
 import { useState } from 'react';
 import { Link } from "react-router-dom";
 import axios from 'axios';
-import '../App.css';
+import './styles.css';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 
 const FormSignup = () => {
@@ -31,17 +32,17 @@ const FormSignup = () => {
       }).then(() =>{
         window.location.reload(false);
       })
+      
   
   };
+  const onChange =() => {};
 
 
 
   return (
     <div className='form-content'>
-      <div  className='form' >
-        <h1>
-          LOGIN
-        </h1>
+      <div className='formL'>
+        <h2>LOGIN</h2>
         <div className='form-inputs'>
           <label className='form-label'>Username</label>
           <input
@@ -64,13 +65,14 @@ const FormSignup = () => {
             value={password}
             onChange={passwordChangeHandler}
           />
-
         </div>
-        <Link to='/' className='form-input-btn' onClick={handleLogIn} >  
+        <ReCAPTCHA className='captcha' sitekey='Your client site key' onChange={onChange}/>
+        <Link to='/' className='form-input-btn1' onClick={handleLogIn} >  
           Log in
         </Link>
         <span className='form-input-login'>
-          You dont have an account? Register <a href='/Register'>here.</a>
+            You don´t have an account ? Register  
+              <a href='/Register'> here.</a>
         </span>
       </div>
     </div>

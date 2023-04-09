@@ -1,25 +1,25 @@
 .container_avatar{
-    height: 150px;
-    width: 150px;
+    height: 220px;
+    width: 220px;
     border-radius: 10px;
-    background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
+    background: #252525;
     margin: 30px;
 }
 .imgpic-holder{
     margin: auto;
-    width: 160px;
-    height: 160px;
+    width: 220px;
+    height: 220px;
     border: 5px black solid;
     border-radius: 5px;
     margin-top: 1rem;
 }
 .imgpic{
-    width: 155px;
-    height: 155px;
+    width: 220px;
+    height: 220px;
     object-fit: cover;
 }
 #input[type="file"] {
-      display: none;
+    display: none;
 }
 .label1{
     width: 100%;
@@ -29,9 +29,9 @@
 }
 .editicon{
     position: absolute;
-    top: 11.5%;
-    right: 90%;
+    top: 9.5%;
+    right: 86.9%;
     color: transparent;
-    width: 150px;
-    height: 150px;  
+    width: 220px;
+    height: 220px;  
 }

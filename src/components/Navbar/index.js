@@ -2,6 +2,8 @@ import React from 'react';
 import './styles.css';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import PopupPassword from '../../pages/Popups/PopupPassword/PopupPassword';
+import PopupSocial from '../../pages/Popups/PopupSocial/PopupSocial';
 
 
 
@@ -87,6 +89,8 @@ const Navbar = ({toogle}) => {
               <div className='dropdown-content'>
                 <Link to={`/currentUser/${currentUser}`}>Profile</Link>
                 <Link to='/' onClick={handleLogOut}>Log Out</Link>
+                <PopupPassword/>
+                <PopupSocial/>
               </div>
             </div>
           </div>

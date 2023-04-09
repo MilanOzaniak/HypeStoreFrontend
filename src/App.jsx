@@ -10,7 +10,7 @@ import UserPage from './pages/UserPage';
 import ShoesPage from './pages/AllShoes';
 import Formm from './components/Form1';
 import AccessoriesPage from './pages/AllAccessories';
-import ClothingPage from './pages/AllTshirts';
+import ClothingPage from './pages/AllClothing';
 import CurrentUserPage from './pages/CurrentUserPage';
 import Footer from './components/Footer/Footer'
 import Review from './pages/Review';

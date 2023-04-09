@@ -4,6 +4,9 @@ import { useState } from 'react';
 import axios from 'axios';
 import image from '../../images/pic.png'
 import { Link, useParams } from "react-router-dom";
+import {FaFacebookSquare, FaInstagram} from 'react-icons/fa';
+
+
 
 const UserPage = () =>{
     const { userName } = useParams();
@@ -34,6 +37,15 @@ const UserPage = () =>{
                             <div className='Profile-Number1'>
                                 <h3>{currentUser.pnumber}</h3>
                             </div>
+                            <div className="socials">
+                                <a className="instagram" href="" title="Instagram">
+                                <span className="instagramicon"><FaInstagram></FaInstagram></span>
+                                </a>
+                                <a className="facebook" href="" title="Facebook">
+                                <span className="facebookicon"><FaFacebookSquare></FaFacebookSquare></span>
+                                </a>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>

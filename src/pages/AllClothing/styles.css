@@ -21,3 +21,14 @@
     flex: 1;
     padding: 1rem;
   }
+  .list-wrap {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 2rem;
+  }
+  
+  
+  .listItem-wrap {
+    display: flex;
+    flex-direction: column;
+  }
