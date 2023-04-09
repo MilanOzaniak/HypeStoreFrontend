@@ -10,6 +10,7 @@ const FormSignup = () => {
   const[username, setUserName] = useState('')
   const[password, setPassword] = useState('')
   const url = localStorage.getItem("url");
+  const sitekey = process.env.REACT_APP_SITE_KEY;
 
   const nameChangeHandler = event => {
       setUserName(event.target.value)
@@ -66,7 +67,9 @@ const FormSignup = () => {
             onChange={passwordChangeHandler}
           />
         </div>
-        <ReCAPTCHA className='captcha' sitekey='Your client site key' onChange={onChange}/>
+        <ReCAPTCHA className='captcha'
+          sitekey='6LfLOXElAAAAALmed6NMaHwS3bNzsFX9R73F9M6r'
+          onChange={onChange}/>
         <Link to='/' className='form-input-btn1' onClick={handleLogIn} >  
           Log in
         </Link>

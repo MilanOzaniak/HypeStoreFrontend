@@ -8,7 +8,8 @@ import { Link } from "react-router-dom";
 import './styles.css';
 
 const Home = () => {
-  const url = "https://hypestorebackend-production-83e4.up.railway.app";
+  //const url = "https://hypestorebackend-production-83e4.up.railway.app";
+  const url = "http://localhost:8080";
   localStorage.setItem("url", url);
   const [item, setItem] = useState([]);
   const [id, setId] = useState('');

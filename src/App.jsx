@@ -19,7 +19,7 @@ function App() {
     <Router>
       <NaSi/>
         <Switch>
-          <Route exact path='/'> <Home/> </Route>
+          <Route exact path='/HypeStoreFrontend'> <Home/> </Route>
           <Route exact path='/shoes'> <ShoesPage/> </Route>
           <Route exact path='/clothing'> <ClothingPage/> </Route>
           <Route exact path='/accessories'> <AccessoriesPage/> </Route>
