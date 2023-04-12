@@ -8,6 +8,7 @@ import ReCAPTCHA from 'react-google-recaptcha';
 
 const FormSignup = () => {
   const history = useHistory();
+  const captchaRef = React.createRef();
   const[username, setUserName] = useState('')
   const[password, setPassword] = useState('')
   const url = process.env.REACT_APP_API_URL;
