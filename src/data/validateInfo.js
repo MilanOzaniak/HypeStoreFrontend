@@ -1,52 +1,48 @@
+
 export default function validateInfo(userName, email, pNumber, password, password2) {
-  let errors = {};
+  const error = {
+    userName: '',
+    email: '',
+    pNumber: '',
+    password: '',
+    password2: '',
+  };
+
+  let valid = true
 
   //userName
-    if (!userName) {
-      errors.userName = 'Username required'
-    } else if (userName < 4){
-      errors.userName = 'User name needs to be 4 characters or more'
+    if (userName < 4){
+      error.userName = 'User name needs to be 4 characters or more'
+      valid = false;
     }
 
 
 
   //email
-    if(!email){
-      errors.email = 'Email required'
-
-    }
-    else if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)){
-      errors.email = 'wrong format'
+    if(!email.includes('@')){
+      error.email = 'wrong format'
+      valid = false
 
     }
 
   //phone number
-    if(!pNumber){
-      errors.pNumber = 'Phone number required'
-
-    }
-    else if(pNumber.length !== 10){
-      errors.pNumber = 'please use correct phone number'
-
-    }
-    else if(!/^\d+$/.test(pNumber)){
-      errors.pNumber = 'wrong format'
-
+     if(!/^(?:(?:\+|00)421|0)([1-9][0-9]{8})$/.test(pNumber)){
+      error.pNumber = 'wrong format'
+      valid = false;
     }
 
       //password  
-      if (!password) {
-        errors.password = 'Password required'
-  
-      } else if (password.length < 6) {
-        errors.password = 'Password needs to be 6 characters or more'
+      if (password.length < 6) {
+        error.password = 'Password needs to be 6 characters or more'
+        valid = false;
   
       }
   
       if(password !== password2){
-        errors.password2 = "passwords doesnt match"
+        error.password2 = "passwords doesnt match"
+        valid = false;
   
       }
 
-    return errors;
+    return {valid, error};
   }

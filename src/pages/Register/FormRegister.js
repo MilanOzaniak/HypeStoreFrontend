@@ -3,19 +3,25 @@ import { useState, useEffect } from 'react';
 import './Register.css'
 import axios from 'axios';
 import validateInfo from '../../data/validateInfo';
-import { Link } from 'react-router-dom';
+import { Link, useHistory} from 'react-router-dom';
 
 const FormSignup = () => {
 
+  const history = useHistory();
   const[userName, setUserName] = useState('')
   const[email, setEmail] = useState('')
   const[pnumber, setPnumber] = useState('')
   const[password, setPassword] = useState('')
   const[password2, setPassword2] = useState('')
   const[user, setUser] = useState([])
-  const [errors, setErrors] = useState({})
   const url = process.env.REACT_APP_API_URL;
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [errors, setErrors] = useState({
+    userName: '',
+    email: '',
+    pNumber: '',
+    password: '',
+    password2: '',
+  });
 
   const nameChangeHandler = event => {
     setUserName(event.target.value)
@@ -38,15 +44,15 @@ const FormSignup = () => {
   };
 
   function handleSubmit() {
-    const user={userName, email, pnumber, password}
-    setErrors(validateInfo(userName, email, pnumber, password, password2));
-    axios.post(url + "/register", user);
-    setIsSubmitting(true)
+    const user={userName, email, pnumber, password, password2}
+    const {valid, error} = validateInfo(userName, email, pnumber, password, password2)
+    setErrors(error)
+    if(valid){
+      axios.post(url + "/register", user);
+      history.push("/Signup")
+    }
 
   };
-
-
-
   return (
     <div className='form-content'>
       <form onSubmit={handleSubmit} className='form' noValidate>
@@ -120,9 +126,9 @@ const FormSignup = () => {
           {errors.password2 && <p>{errors.password2}</p>}
         </div>
 
-        <Link to={'/Signup'} className='form-input-btn' type='submit' onClick={handleSubmit}>
+        <div className='form-input-btn' type='submit' onClick={handleSubmit}>
           Register
-        </Link>
+        </div>
 
         <span className='form-input-login'>
           Already have an account? Login <a href='/Signup'>here.</a>
