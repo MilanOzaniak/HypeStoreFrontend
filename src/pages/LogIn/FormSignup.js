@@ -27,11 +27,12 @@ const FormSignup = () => {
   console.log(process.env.REACT_APP_SECRET_KEY)
 
   const handleCaptchaChange = (token) => {
-    const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-    const recaptchaUrl = `https://www.google.com/recaptcha/api/siteverify?secret='6LfLOXElAAAAAEYxcTErnVG5yW8gXy2htYQLZ2Zy'&response=${token}`;
-
-    axios.post(proxyUrl + recaptchaUrl)
-    .then((response) => {
+    axios.post('https://www.google.com/recaptcha/api/siteverify', null, {
+      params: {
+        secret: '6LfLOXElAAAAAEYxcTErnVG5yW8gXy2htYQLZ2Zy',
+        response: token,
+      }
+    }).then((response) => {
       setCaptchaVerified(response.data.success);
     });
   };
