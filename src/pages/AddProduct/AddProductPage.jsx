@@ -11,7 +11,7 @@ function AddProductPage() {
   const[price, setPrice] = useState('')
   const[category, setCategory] = useState('')
   const[files, setFiles] = useState('')
-  const url = localStorage.getItem("url");
+  const url = process.env.REACT_APP_API_URL;
   let imageNames = [];
 
   const titleChangeHandler = event => {

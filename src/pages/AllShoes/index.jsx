@@ -12,7 +12,7 @@ const ShoesPage = () => {
   const [resultsFound, setResultsFound] = useState(true);
   const [searchInput, setSearchInput] = useState('');
   const [item, setItem] = useState([]);
-  const url = localStorage.getItem("url");
+  const url = process.env.REACT_APP_API_URL;
   const [checkedLowest, setCheckedLowest ] = useState(false);
   const [checkedHighest, setCheckedHighest ] = useState(false);
   const [size, setSize] = useState('');

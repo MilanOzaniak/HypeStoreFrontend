@@ -8,7 +8,7 @@ const ClothingPage = () => {
   const [resultsFound, setResultsFound] = useState(true);
   const [searchInput, setSearchInput] = useState('');
   const [item, setItem] = useState([]);
-  const url = localStorage.getItem("url");
+  const url = process.env.REACT_APP_API_URL;
 
 
   useEffect(() => {

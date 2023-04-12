@@ -9,7 +9,7 @@ import ReCAPTCHA from 'react-google-recaptcha';
 const FormSignup = () => {
   const[username, setUserName] = useState('')
   const[password, setPassword] = useState('')
-  const url = localStorage.getItem("url");
+  const url = process.env.REACT_APP_API_URL;
   const sitekey = process.env.REACT_APP_SITE_KEY;
 
   const nameChangeHandler = event => {

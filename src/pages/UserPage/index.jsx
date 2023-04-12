@@ -11,7 +11,11 @@ import {FaFacebookSquare, FaInstagram} from 'react-icons/fa';
 const UserPage = () =>{
     const { userName } = useParams();
     const [currentUser, setCurrentUser] = useState('');
-    const url = localStorage.getItem("url");
+    const [comment, setComment] = useState('');
+    const [isVisible, setIsVisible] = useState(false);
+    const [items, setItems] = useState('');
+    const token = localStorage.getItem("token");
+    const url = process.env.REACT_APP_API_URL;
 
     useEffect( () =>{
         axios.get(url + "/user/getUser/" + userName).then((response)=>{
@@ -19,6 +23,31 @@ const UserPage = () =>{
         })
     }, [])
 
+    console.log(currentUser)
+    const handleComment = event =>{
+        setComment(event.target.value)
+    }
+
+    function handleProducts (e){
+        setIsVisible(false)
+    }
+
+    function handleComments (){
+        setIsVisible(true)
+    }
+
+    function writeComment(){
+        const data = new FormData();
+        data.append("id", currentUser.id)
+        data.append("comment", comment)
+        axios.post(url + "/comment/writeComment", data, {headers:{"Authorization" : `Bearer ${token}`}}).then((response)=>{
+            window.location.reload(false);
+            setIsVisible(true);
+        })
+        console.log(userName)
+
+
+    }
     return(
         <div>
             <div className='container1'>
@@ -50,8 +79,14 @@ const UserPage = () =>{
                     </div>
                 </div>
             </div>
+            <div className="submenu">
+            <div className="Submenu-Links">
+                <a className='product' onClick={handleProducts}>Product</a>
+                <a className='comments' onClick={handleComments}>Comments</a>
+            </div>
+            </div>
 
-            <div className='list-wrap'>
+            <div className='list-wrap' style = {{display: isVisible ? 'none' : 'grid' }}>
                 {currentUser.items? (currentUser.items.map((data) =>
                     {return (
                     <div className='listItem-wrap' key={data.id}>
@@ -68,6 +103,34 @@ const UserPage = () =>{
                         </footer>
                      </div>
                 )})) : (<h3>No data yet</h3>)}
+            </div>
+            <div className='comment-session' style = {{display: isVisible ? 'block' : 'none' }}>
+            {currentUser.comments? (currentUser.comments.map((data) =>
+                {return(
+                <div className='post-comment' key={data.id}>
+                    <div className='list'>
+                        <div className='user'>
+                            <div className='user-image'><img src={data.profilePic ? url + "/user/getImage/" + data.profilePic : null} className="faq" alt=''/></div>
+                            <div className='user-meta'>
+                                <Link to={`/user/${data.ownerName}`} className='name'>{data.ownerName}</Link>
+                                <div className='day'>{data.date}</div>
+                            </div>
+                        </div>
+                        <div className='comment-post'>{data.comment}</div>
+                    </div>
+                </div>
+            )})): (<h3>No data yet</h3>)}
+                
+                <div className='comment-box'>
+                    <div className='user'>
+                        <div className='image'><img src={""} className="faq" alt=''/></div>
+                        <div className='name'>{localStorage.getItem("userName")}</div>
+                    </div>
+                    <div >
+                        <textarea name='comment' value ={comment} onChange={handleComment} placeholder='Your Message'></textarea>
+                        <button className='comment-submit' onClick={writeComment}>Comment</button>
+                    </div>
+                </div>
             </div>
 
         </div>

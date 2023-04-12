@@ -14,7 +14,7 @@ const FormSignup = () => {
   const[password2, setPassword2] = useState('')
   const[user, setUser] = useState([])
   const [errors, setErrors] = useState({})
-  const url = localStorage.getItem("url");
+  const url = process.env.REACT_APP_API_URL;
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const nameChangeHandler = event => {

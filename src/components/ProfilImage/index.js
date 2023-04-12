@@ -9,7 +9,7 @@ function ProfileImage(){
   const [currentUser, setCurrentUser] = useState([]);
   const token = localStorage.getItem("token");
   const userName = localStorage.getItem("userName");
-  const url = localStorage.getItem("url");
+  const url = process.env.REACT_APP_API_URL;
 
   useEffect( () =>{
     axios.get(url + "/user/getUser/" + userName).then((response)=>{

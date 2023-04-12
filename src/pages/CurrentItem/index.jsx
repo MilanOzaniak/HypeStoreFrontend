@@ -14,7 +14,7 @@ const CurrentItemPage = () =>{
     const token = localStorage.getItem("token");
     const currentUser = localStorage.getItem("userName");
     const [isAdmin] = useState(currentUser === "admin");
-    const url = localStorage.getItem("url");
+    const url = process.env.REACT_APP_API_URL;
     let images = [];
 
     useEffect (async () =>{

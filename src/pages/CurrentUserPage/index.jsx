@@ -10,7 +10,9 @@ import {FaFacebookSquare, FaInstagram} from 'react-icons/fa';
 const CurrentUserPage = () =>{
     const [currentUser, setCurrentUser] = useState('');
     const [items, setItems] = useState('');
-    const url = localStorage.getItem("url");
+    const [comments, setComments] = useState('');
+    const [isVisible, setIsVisible] = useState(false);
+    const url = process.env.REACT_APP_API_URL;
     const userName = localStorage.getItem("userName");
     const token = localStorage.getItem("token");
     
@@ -19,7 +21,9 @@ const CurrentUserPage = () =>{
     useEffect( () =>{
         axios.get(url + "/user/getUser/" + userName).then((response)=>{
             setCurrentUser(response.data);
-            setItems(response.data.items)
+            setItems(response.data.items);
+            setComments(response.data.comments);
+            
         })
     }, [])
 
@@ -31,16 +35,25 @@ const CurrentUserPage = () =>{
         
     }
 
+    console.log(comments)
+
     function handleProducts (e){
         setItems(currentUser.items)
+        setIsVisible(false)
     }
 
     function handleFavorite (e){
         setItems(currentUser.favItems)
+        setIsVisible(false)
     }
 
     function handleReserved (e){
         setItems(currentUser.reservedItems)
+        setIsVisible(false)
+    }
+
+    function handleComments (){
+        setIsVisible(true)
     }
 
     console.log(currentUser);
@@ -80,10 +93,10 @@ const CurrentUserPage = () =>{
                 <a className='product' onClick={handleProducts}>Product</a>
                 <a className='favorite' onClick={handleFavorite}>Favorite</a>
                 <a className='reserved' onClick={handleReserved}>Reserved</a>
-                <a className='comments' href="/Review">Comments</a>
+                <a className='comments' onClick={handleComments}>Comments</a>
             </div>
             </div>
-            <div className='list-wrap'>
+            <div className='list-wrap'  style = {{display: isVisible ? 'none' : 'grid' }} >
                 {items? (items.map((data) =>
                     {return (
                         
@@ -101,6 +114,25 @@ const CurrentUserPage = () =>{
 
                      </div>
                 )})) : (<h3>No data yet</h3>)}
+            </div>
+
+            <div className='comment-session' style = {{display: isVisible ? 'block' : 'none' }}>
+            {comments? (comments.map((data) =>
+                {return(
+                <div className='post-comment' key={data.id}>
+                    <div className='list'>
+                        <div className='user'>
+                            <div className='user-image'><img src={data.profilePic ? url + "/user/getImage/" + data.profilePic : null} className="faq" alt=''/></div>
+                            <div className='user-meta'>
+                                <Link to={`/user/${data.ownerName}`} className='name'>{data.ownerName}</Link>
+                                <div className='day'>{data.date}</div>
+                            </div>
+                        </div>
+                        <div className='comment-post'>{data.comment}</div>
+                    </div>
+                </div>
+            )})): (<h3>No data yet</h3>)}
+                
             </div>
 
         </div>

@@ -7,7 +7,7 @@ const PopupPassword = () => {
     const [oldPass, setOldPass] = useState('');
     const [newPass, setNewPass] = useState('');
     const token = localStorage.getItem("token");
-    const url = localStorage.getItem("url");
+    const url = process.env.REACT_APP_API_URL;
 
     const oldPassChangeHandler = event => {
         setOldPass(event.target.value)
