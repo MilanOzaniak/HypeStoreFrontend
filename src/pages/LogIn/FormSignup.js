@@ -11,8 +11,6 @@ const FormSignup = () => {
   const[username, setUserName] = useState('')
   const[password, setPassword] = useState('')
   const url = process.env.REACT_APP_API_URL;
-  const sitekey = process.env.REACT_APP_SITE_KEY;
-  const secretkey = process.env.REACT_APP_SECRET_KEY;
   const [errorMessage, setErrorMessage] = useState('');
   const [captchaVerified, setCaptchaVerified] = useState(false);
 
@@ -25,10 +23,13 @@ const FormSignup = () => {
       setPassword(event.target.value)
   };
 
+  console.log(process.env.REACT_APP_SITE_KEY)
+  console.log(process.env.REACT_APP_SECRET_KEY)
+
   const handleCaptchaChange = (token) => {
     axios.post('https://www.google.com/recaptcha/api/siteverify', null, {
       params: {
-        secret: secretkey,
+        secret: '6LfLOXElAAAAAEYxcTErnVG5yW8gXy2htYQLZ2Zy',
         response: token,
       }
     }).then((response) => {
@@ -104,7 +105,7 @@ const FormSignup = () => {
           {errorMessage && <p>{errorMessage}</p>}
         </div>
         <ReCAPTCHA className='captcha'
-          sitekey={sitekey}
+          sitekey='6LfLOXElAAAAALmed6NMaHwS3bNzsFX9R73F9M6r'
           onChange={handleCaptchaChange}/>
         <div className='form-input-btn1' onClick={handleLogIn} >  
           Log in

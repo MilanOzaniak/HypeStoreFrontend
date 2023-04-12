@@ -1,7 +1,7 @@
 {
   "name": "hypestore",
   "version": "0.1.0",
-  "homepage": "http://milanozaniak.github.io/",
+  "homepage": "http://milanozaniak.github.io/HypeStoreFrontend",
   "private": true,
   "dependencies": {
     "@material-ui/icons": "^4.11.3",
