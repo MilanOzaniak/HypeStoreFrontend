@@ -47,6 +47,7 @@ const FormSignup = () => {
     setErrorMessage(error);
     if(!error){
       history.push('/');
+      window.location.reload(false);
     }
   };
 
