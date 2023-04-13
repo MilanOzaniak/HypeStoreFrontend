@@ -15,8 +15,6 @@ const FormSignup = () => {
   const [captchaVerified, setCaptchaVerified] = useState(false);
   const captchaRef = useRef(null)
 
-  console.log(captchaVerified);
-
   const nameChangeHandler = event => {
       setUserName(event.target.value)
   }
@@ -24,8 +22,6 @@ const FormSignup = () => {
   const passwordChangeHandler = event => {
       setPassword(event.target.value)
   };
-
-   console.log("aaaaa")
 
 
 
@@ -51,7 +47,6 @@ const FormSignup = () => {
         return setCaptchaVerified(true);
       }
     })
-    console.log(captchaVerified)
   };
 
   async function validateLogin(username, password) {
@@ -67,7 +62,6 @@ const FormSignup = () => {
     try {
       const response = await axios.post(url + "/auth", { username, password });
       const token = response.data.token;
-      console.log(response.data);
       localStorage.setItem("token", token);
       localStorage.setItem("userName", username);
 
