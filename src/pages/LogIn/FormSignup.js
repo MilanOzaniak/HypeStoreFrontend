@@ -28,23 +28,6 @@ const FormSignup = () => {
   console.log(process.env.REACT_APP_SITE_KEY)
   console.log(process.env.REACT_APP_SECRET_KEY)
 
-  const handleCaptchaChange = () => {
-    const token = captchaRef.current.getValue();
-    axios.post( url + '/captcha-verify', null, {
-      params: {
-        responseToken: token,
-      },
-    }).then((response) => {
-      console.log(response.status);
-        if (response.status === 200) {
-          return setCaptchaVerified(true);
-        }
-    }).catch((error) => {
-      setErrorMessage('An error occurred while verifying captcha');
-      console.log(error);
-    });
-  };
-
 
   async function handleLogIn (event){
     event.preventDefault();
@@ -53,6 +36,19 @@ const FormSignup = () => {
     if(!error){
       history.push('/HypeStoreFrontend');
       window.location.reload(false);
+    }
+  };
+
+  const handleCaptchaChange = () => {
+    const token = captchaRef.current.getValue();
+    setCaptchaVerified(true)
+    const response = axios.post( url + '/captcha-verify', null, {
+      params: {
+        responseToken: token,
+      },
+    })
+    if (response.status === 200) {
+      return setCaptchaVerified(true);
     }
   };
 
