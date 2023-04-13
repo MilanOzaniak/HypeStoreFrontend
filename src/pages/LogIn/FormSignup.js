@@ -102,8 +102,7 @@ const FormSignup = () => {
         </div>
         <ReCAPTCHA className='captcha'
           sitekey='6LfLOXElAAAAALmed6NMaHwS3bNzsFX9R73F9M6r'
-          onClickCapture={handleCaptchaChange}
-          ref={captchaRef}/>
+          onClickCapture={handleCaptchaChange}/>
         <div className='form-input-btn1' onClick={handleLogIn} >  
           Log in
         </div>
