@@ -35,7 +35,9 @@ const FormSignup = () => {
         responseToken: token,
       },
     }).then((response) => {
-      setCaptchaVerified(response.data.success);
+        if (response.status === 200) {
+          return setCaptchaVerified(true);
+        }
     }).catch((error) => {
       setErrorMessage('An error occurred while verifying captcha');
       console.log(error);
