@@ -25,8 +25,8 @@ const FormSignup = () => {
       setPassword(event.target.value)
   };
 
-  console.log(process.env.REACT_APP_SITE_KEY)
-  console.log(process.env.REACT_APP_SECRET_KEY)
+   console.log("aaaaa")
+
 
 
   async function handleLogIn (event){
