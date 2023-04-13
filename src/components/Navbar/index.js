@@ -2,8 +2,9 @@ import React from 'react';
 import './styles.css';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import PopupPassword from '../../pages/Popups/PopupPassword/PopupPassword';
-import PopupSocial from '../../pages/Popups/PopupSocial/PopupSocial';
+import { FaBars, FaTimes } from "react-icons/fa";
+
+
 
 
 
@@ -14,92 +15,53 @@ const Navbar = ({toogle}) => {
   const [click, setClick] = useState(false);
   const [dropdown, setDropdown] = useState(false);
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   function handleLogOut(){
     localStorage.clear();
     window.location.href = "/";
   }
 
-  const handleClick = () => setClick(!click);
-  const closeMobileMenu = () => setClick(false);
-
-  const onMouseEnter = () => {
-    if (window.innerWidth < 960) {
-      setDropdown(false);
-    } else {
-      setDropdown(true);
-    }
-  };
-
-  const onMouseLeave = () => {
-    if (window.innerWidth < 960) {
-      setDropdown(false);
-    } else {
-      setDropdown(false);
-    }
-  };
-
-
   return (
     <>
       <nav className='navbar'>
-        <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
+        <Link to='/' className='navbar-logo'>
             HYPESTORE
-          <i className='fab fa-firstdraft' />
         </Link>
-        <div className='menu-icon' onClick={handleClick}>
-          <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
+        <div className='menu-icon' onClick={toggleMenu}>
+          {isOpen ? <FaTimes /> : <FaBars />}
         </div>
-        <ul className={click ? 'nav-menu active' : 'nav-menu'}>
+        <ul className={isOpen ? "nav-menu active" : "nav-menu"}>
           <li className='nav-item'>
-            <Link to='/Shoes' className='nav-links' onClick={closeMobileMenu}>
-              Shoes
-            </Link>
-          </li>
-          <li
-            className='nav-item'
-            onMouseEnter={onMouseEnter}
-            onMouseLeave={onMouseLeave}
-          >
+            <Link to='/Shoes' className='nav-links'onClick={toggleMenu}>Topánky</Link>
           </li>
           <li className='nav-item'>
-            <Link
-              to='/clothing'
-              className='nav-links'
-              onClick={closeMobileMenu}
-            >
-              Clothing
-            </Link>
+            <Link to='/clothing' className='nav-links'onClick={toggleMenu} > Oblečenie</Link>
           </li>
           <li className='nav-item'>
-            <Link
-              to='/accessories'
-              className='nav-links'
-              onClick={closeMobileMenu}>
-              Accessories
-            </Link>
+            <Link to='/accessories' className='nav-links'onClick={toggleMenu}> Doplnky</Link>
           </li>
           <div className='dropdown'>
             <li className='dropbtn' style={{display: isVisible? 'block' : 'none'}}>
               <Link className='dropbtn' to='/signup'>Log in</Link>
             </li>
-            <div className='drop'>
-              <li style={{display: isVisible? 'none' : 'flex'}}>
-                <a className="dropbtn">{currentUser}</a>
-              </li>
-              <div className='dropdown-content'>
+            <div className='drop' onClick={toggleMenu}> 
+              <a className="dropbtn" >{currentUser}</a>
+              <div className='dropdown-content' onClick={toggleMenu}>
                 <Link to={`/currentUser/${currentUser}`}>Profile</Link>
-                <Link to='/HypeStoreFrontend' onClick={handleLogOut}>Log Out</Link>
-                <PopupPassword/>
-                <PopupSocial/>
+                <Link to={`/Options/${currentUser}`}>Options</Link>
+                <Link to='/' onClick={handleLogOut}>Log Out</Link>
               </div>
             </div>
           </div>
         </ul>
 
         <div className='addproduct-button' style={{display: isVisible? 'none' : 'block'}}>
-          <Link to={'/createitempage'} className='btn'>
-            Add product
-          </Link>
+          <Link to={'/createitempage'} className='btn'>Pridať&nbsp;produkt</Link>
         </div>
       </nav>
     </>

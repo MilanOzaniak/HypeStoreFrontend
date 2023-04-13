@@ -12,7 +12,7 @@ const FormSignup = () => {
   const[password, setPassword] = useState('')
   const url = process.env.REACT_APP_API_URL;
   const [errorMessage, setErrorMessage] = useState('');
-  const [captchaVerified, setCaptchaVerified] = useState(false);
+  const [captchaVerified, setCaptchaVerified] = useState(true);
   const captchaRef = useRef(null)
 
   const nameChangeHandler = event => {
@@ -111,7 +111,7 @@ const FormSignup = () => {
           onChange={handleCaptchaChange}
           ref={captchaRef}/>
 
-        <div className='form-input-btn1' onClick={handleLogIn} >  
+        <div className='form-input-btnlogin' onClick={handleLogIn} >  
           Log in
         </div>
         <span className='form-input-login'>

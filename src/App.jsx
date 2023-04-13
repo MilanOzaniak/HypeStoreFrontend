@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './pages/HomePage/index';
 import CurrentItem from './pages/currentItem';
 import SignUp from './pages/signup';
-import NaSi from './pages/NaSi';
 import AddProductPage from './pages/AddProduct/AddProductPage';
 import UserPage from './pages/UserPage';
 import ShoesPage from './pages/AllShoes';
@@ -14,10 +13,11 @@ import ClothingPage from './pages/AllClothing';
 import CurrentUserPage from './pages/CurrentUserPage';
 import Footer from './components/Footer/Footer'
 import Review from './pages/Review';
+import Navbar from './components/Navbar';
 function App() {
   return (
     <Router>
-      <NaSi/>
+      <Navbar/>
         <Switch>
           <Route exact path='/'> <Home/> </Route>
           <Route exact path='/shoes'> <ShoesPage/> </Route>

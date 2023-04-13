@@ -42,21 +42,17 @@ const CurrentItemPage = () =>{
         <body>
             <section>
                 <div className="container flex">
-                    <div className='' style={{display: isAdmin? 'block' : 'none'}}>
-                        <Link to={'/'} className='delete' onClick={()=>{handleDelete(id)}}>X</Link>
-                    </div>
-                    <div className='more' style={{display: user? 'block' : 'none'}}>
-                        <FiMoreVertical/>
-                    </div>
                     <div className="left">
-                    <div className="main_image1">
-                        <img src={currentItem.imageNames ? url +"/item/getImage/" + currentItem.imageNames[0] : null} alt="" className="main_img"></img>
-                    </div>
-                    <div className="option flex">
-                            <img src={currentItem.imageNames ? url +"/item/getImage/" + currentItem.imageNames[1] : null} alt=""className="main_imgg"></img>  
-                            <img src={currentItem.imageNames ? url +"/item/getImage/" + currentItem.imageNames[2] : null} alt=""className="main_imgg"></img>
-                            <img src={currentItem.imageNames ? url +"/item/getImage/" + currentItem.imageNames[3] : null} alt=""className="main_imgg"></img>
-                            <img src={currentItem.imageNames ? url +"/item/getImage/" + currentItem.imageNames[3] : null} alt=""className="main_imgg"></img>
+                        <div className='product1'>
+                            <div className="product_small_img">
+                                <img src={currentItem.imageNames ? url +"/item/getImage/" + currentItem.imageNames[1] : null} alt="" ></img>  
+                                <img src={currentItem.imageNames ? url +"/item/getImage/" + currentItem.imageNames[2] : null} alt="" ></img>
+                                <img src={currentItem.imageNames ? url +"/item/getImage/" + currentItem.imageNames[3] : null} alt="" ></img>
+                                <img src={currentItem.imageNames ? url +"/item/getImage/" + currentItem.imageNames[3] : null} alt="" ></img>
+                             </div>
+                                <div className='img_container'>
+                                    <img src={currentItem.imageNames ? url +"/item/getImage/" + currentItem.imageNames[0] : null} alt=""  ></img>
+                                </div>
                         </div>
                     </div>
                     <div className="right"> 

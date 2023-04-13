@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { Link } from "react-router-dom";
 import './styles.css';
+import Faquestion from '../../components/Faquestion/Faquestion';
 
 const Home = () => {
   const url = process.env.REACT_APP_API_URL;
@@ -39,7 +40,9 @@ const Home = () => {
         )})) : (<h3>No data yet</h3>)}
         </div>
       </div>
-    </div></>
+    </div>
+    <Faquestion/>
+    </>
   );
 };
 

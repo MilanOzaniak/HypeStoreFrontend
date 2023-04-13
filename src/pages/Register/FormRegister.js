@@ -54,8 +54,8 @@ const FormSignup = () => {
 
   };
   return (
-    <div className='form-content'>
-      <form onSubmit={handleSubmit} className='form' noValidate>
+    <div className='form-contentR'>
+      <form onSubmit={handleSubmit} className='formR' noValidate>
         <h1>
         REGISTER
         </h1>
@@ -126,7 +126,7 @@ const FormSignup = () => {
           {errors.password2 && <p>{errors.password2}</p>}
         </div>
 
-        <div className='form-input-btn' type='submit' onClick={handleSubmit}>
+        <div className='form-input-btnregister' type='submit' onClick={handleSubmit}>
           Register
         </div>
 

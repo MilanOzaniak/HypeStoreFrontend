@@ -64,92 +64,105 @@ function AddProductPage() {
       );
   }
     return (
-      <div className="wrapper">
-        <div className="title">
-            Add Product
-        </div>
-        <div className="form">
-            <div className="inputfield">
-                <label>Title</label>
-                <input 
-                  type="text"
-                  className="input"
-                  value={title}
-                  onChange={titleChangeHandler}>
-                </input>
-          </div>  
+      <div className="wrapperp">
+      <div className="formp">
+      <div className="title">Pridať produkt</div>
           <div className="inputfield">
-            <label>Price</label>
-              <input
-                type="text" 
-                className="input" 
-                value={price} 
-                onChange={priceChangeHandler}>
+              <label for="text">Názov </label>
+              <p className='select_info'>Pomenuj svoj produkt. Ideálne ak bude obsahovať názov produktu a všetko, čo uznáš za dôležité.</p>
+              <input 
+                type="text"
+                className="input"
+                value={title}
+                onChange={titleChangeHandler}>
               </input>
-        </div>   
-          <div className="inputfield">
-            <label>Category</label>
-              <div className="custom_select">
-                <select 
-                  value={category}
-                  onChange={categoryChangeHandler}>
-                  <option value="">Select</option>
-                  <option 
-                    value={"Shoes"}>Shoes</option>
-                  <option
-                    value={"Clothing"}>Clothing</option>
-                  <option 
-                    value={"Accessories"}>Accessories</option>
-                </select>
-              </div>
-          </div> 
+        </div>  
+        <div className="inputfield">
+          <label for="text"> Cena</label>
+          <p className='select_info'>Napíš sumu, ktorú chceš dostať za predávanú vec..</p>
+            <input
+              type="text" 
+              className="input" 
+              value={price} 
+              onChange={priceChangeHandler}>
+            </input>
+      </div>
+      <div className='category'>
+        <div className="inputfield_select">
+          <label for="text">Kategória</label>
+          <p className='select_info'>Vyber kategóriu, do ktorej sa tvoja vec najviac hodí.</p>
+            <div className="custom_select">
+              <select 
+                value={category}
+                onChange={categoryChangeHandler}>
+                <option value="">Select</option>
+                <option 
+                  value={"Shoes"}>Topánky</option>
+                <option
+                  value={"Clothing"}>Oblečenie</option>
+                <option 
+                  value={"Accessories"}>Doplnky</option>
+              </select>
+            </div>
+        </div> 
 
-          <div className="inputfield">
-            <label>Size</label>
-              <div className="custom_select" >
-                <select label="Select"
-                  value={size}
-                  onChange={sizeChangeHandler}>
-                    <option style={{display: 'none'}}>Select</option>
-                    <optgroup label='Shoes'>
-                      <option 
-                        value="36">36</option>
-                      <option 
-                        value="37">37</option>
-                      <option 
-                        value="38">38</option>
-                      <option 
-                        value="39">39</option>
-                    </optgroup>
-                    <optgroup label='Clothing'>
-                      <option 
-                        value="S">S</option>
-                      <option 
-                        value="M">M</option>
-                     <option 
-                        value="L">L</option>
-                      <option 
-                        value="XL">XL</option>
+        <div className="inputfield_select">
+          <label for="text">Veľkosť</label>
+          <p className='select_info'>Vyber veľkosť, do ktorej sa tvoja vec najviac hodí.</p>
+            <div className="custom_select" >
+              <select label="Select"
+                value={size}
+                onChange={sizeChangeHandler}>
+                  <option style={{display: 'none'}}>Select</option>
+                  <optgroup label='Shoes'>
+                  <option value="34">34</option>
+                  <option value="35">35</option>
+                  <option value="36">36</option>
+                  <option value="37">37</option>
+                  <option value="38">38</option>
+                  <option value="39">39</option>
+                  <option value="40">40</option>
+                  <option value="41">41</option>
+                  <option value="42">42</option>
+                  <option value="43">43</option>
+                  <option value="44">44</option>
+                  <option value="45">45</option>
+                  <option value="46">46</option>
+                  <option value="47">47</option>
+                  <option value="48">48</option>
+                  <option value="49">49</option>
                   </optgroup>
-                </select>
-             </div>
-          </div> 
-          <div className="inputfield">
-            <label>Decsription</label>
-            <textarea 
-              className="textarea"
-              value={description}
-              onChange={descriptionChangeHandler}>
-            </textarea>
-          </div>
-          <div className="multipart">
-            <input id="fileInput" type="file" multiple onChange={fileChangeHandler}/>
-          </div>
-          <div className="inputfield">
-              <input type="submit" value="Create Item" className="btn1" onClick={handleSubmit}></input>
-          </div>
+                  <optgroup label='Clothing'>
+                    <option 
+                      value="S">S</option>
+                    <option 
+                      value="M">M</option>
+                   <option 
+                      value="L">L</option>
+                    <option 
+                      value="XL">XL</option>
+                </optgroup>
+              </select>
+           </div>
+        </div>
+      </div> 
+        <div className="inputfield">
+          <label>Popis produktu</label>
+          <p className='select_info'>Všetko, čo by mal kupujúci vedieť o predávanej veci. Čím viac napíšeš, tým viac času ušetríš záujemcom, aj sebe.</p>
+          <textarea 
+            className="textarea"
+            value={description}
+            onChange={descriptionChangeHandler}>
+          </textarea>
+        </div>
+        <div className="multipart">
+          <input id="fileInput" type="file" multiple onChange={fileChangeHandler}/>
+        </div>
+        <div className="inputfield">
+            <input type="submit" value="Create Item" className="btn1" onClick={handleSubmit}></input>
         </div>
       </div>
+    </div>
     );
 };
 

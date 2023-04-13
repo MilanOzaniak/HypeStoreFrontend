@@ -61,8 +61,6 @@ const CurrentUserPage = () =>{
     return(
         <div>
             <div className='container1'>
-            <button className="editbutton">Edit</button>
-            <button className="nahlasit">Nahlasiť</button>
                 <div className='profile-details1'>
                 <ProfileImage/>
                     <div className='pd-row1'>
