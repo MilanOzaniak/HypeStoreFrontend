@@ -35,7 +35,7 @@ const FormSignup = () => {
         responseToken: token,
       },
     }).then((response) => {
-      console.log(response);
+      console.log(response.status);
         if (response.status === 200) {
           return setCaptchaVerified(true);
         }
