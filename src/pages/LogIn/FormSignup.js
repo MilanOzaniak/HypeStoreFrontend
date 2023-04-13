@@ -27,9 +27,17 @@ const FormSignup = () => {
   console.log(process.env.REACT_APP_SITE_KEY)
   console.log(process.env.REACT_APP_SECRET_KEY)
 
-  const handleCaptchaChange = () => {
-    setCaptchaVerified(true);
-    console.log(captchaVerified);
+  const handleCaptchaChange = (token) => {
+    axios.post( url + '/captcha-verify', null, {
+      params: {
+        responseToken: token,
+      },
+    }).then((response) => {
+      setCaptchaVerified(response.data.success);
+    }).catch((error) => {
+      setErrorMessage('An error occurred while verifying captcha');
+      console.log(error);
+    });
   };
 
 
@@ -102,7 +110,7 @@ const FormSignup = () => {
         </div>
         <ReCAPTCHA className='captcha'
           sitekey='6LfLOXElAAAAALmed6NMaHwS3bNzsFX9R73F9M6r'
-          onClickCapture={handleCaptchaChange}/>
+          onClick={handleCaptchaChange}/>
         <div className='form-input-btn1' onClick={handleLogIn} >  
           Log in
         </div>
