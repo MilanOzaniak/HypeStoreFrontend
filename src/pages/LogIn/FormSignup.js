@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useRef  } from 'react';
 import { Link, useHistory } from "react-router-dom";
 import axios from 'axios';
 import './styles.css';
@@ -13,6 +13,7 @@ const FormSignup = () => {
   const url = process.env.REACT_APP_API_URL;
   const [errorMessage, setErrorMessage] = useState('');
   const [captchaVerified, setCaptchaVerified] = useState(false);
+  const captchaRef = useRef(null)
 
   console.log(captchaVerified);
   const nameChangeHandler = event => {
@@ -27,7 +28,8 @@ const FormSignup = () => {
   console.log(process.env.REACT_APP_SITE_KEY)
   console.log(process.env.REACT_APP_SECRET_KEY)
 
-  const handleCaptchaChange = (token) => {
+  const handleCaptchaChange = () => {
+    const token = captchaRef.current.getValue();
     axios.post( url + '/captcha-verify', null, {
       params: {
         responseToken: token,
@@ -110,7 +112,8 @@ const FormSignup = () => {
         </div>
         <ReCAPTCHA className='captcha'
           sitekey='6LfLOXElAAAAALmed6NMaHwS3bNzsFX9R73F9M6r'
-          onClick={handleCaptchaChange}/>
+          onClick={handleCaptchaChange}
+          ref={captchaRef}/>
         <div className='form-input-btn1' onClick={handleLogIn} >  
           Log in
         </div>
