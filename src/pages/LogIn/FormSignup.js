@@ -39,19 +39,9 @@ const FormSignup = () => {
     }
   };
 
-  async function handleCaptchaChange () {
-    const token = captchaRef.current.getValue();
-    await axios.post( url + '/captcha-verify', null, {
-      params: {
-        responseToken: token,
-      },
-    }).then((response) =>{
-      console.log(response.data.status)
-      console.log(response.data)
-      if (response.status === 200) {
-        return setCaptchaVerified(true);
-      }
-    })
+  function handleCaptchaChange (value) {
+    console.log(value);
+    setCaptchaVerified(true);
   };
 
   async function validateLogin(username, password) {
@@ -114,8 +104,7 @@ const FormSignup = () => {
 
         <ReCAPTCHA className='captcha'
           sitekey='6LfLOXElAAAAALmed6NMaHwS3bNzsFX9R73F9M6r'
-          onClick={handleCaptchaChange}
-          ref={captchaRef}/>
+          onChange={handleCaptchaChange}/>
 
         <div className='form-input-btn1' onClick={handleLogIn} >  
           Log in
