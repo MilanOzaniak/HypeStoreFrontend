@@ -16,9 +16,9 @@ const FormSignup = () => {
   const captchaRef = useRef(null)
 
   console.log(captchaVerified);
+
   const nameChangeHandler = event => {
       setUserName(event.target.value)
-      console.log(username)
   }
 
   const passwordChangeHandler = event => {
@@ -41,16 +41,17 @@ const FormSignup = () => {
 
   const handleCaptchaChange = () => {
     const token = captchaRef.current.getValue();
-    setCaptchaVerified(true)
-    const response = axios.post( url + '/captcha-verify', null, {
+    axios.post( url + '/captcha-verify', null, {
       params: {
         responseToken: token,
       },
+    }).then((response) =>{
+      console.log(response.data.status)
+      console.log(response.data)
+      if (response.status === 200) {
+        return setCaptchaVerified(true);
+      }
     })
-    console.log(response.data)
-    if (response.status === 200) {
-      return setCaptchaVerified(true);
-    }
   };
 
   async function validateLogin(username, password) {
@@ -110,10 +111,12 @@ const FormSignup = () => {
           />
           {errorMessage && <p>{errorMessage}</p>}
         </div>
+
         <ReCAPTCHA className='captcha'
           sitekey='6LfLOXElAAAAALmed6NMaHwS3bNzsFX9R73F9M6r'
           onClick={handleCaptchaChange}
           ref={captchaRef}/>
+
         <div className='form-input-btn1' onClick={handleLogIn} >  
           Log in
         </div>
