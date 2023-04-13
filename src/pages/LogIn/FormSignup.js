@@ -39,9 +39,9 @@ const FormSignup = () => {
     }
   };
 
-  const handleCaptchaChange = () => {
+  async function handleCaptchaChange () {
     const token = captchaRef.current.getValue();
-    axios.post( url + '/captcha-verify', null, {
+    await axios.post( url + '/captcha-verify', null, {
       params: {
         responseToken: token,
       },
