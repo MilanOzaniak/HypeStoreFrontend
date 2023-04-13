@@ -8,13 +8,13 @@ import ReCAPTCHA from 'react-google-recaptcha';
 
 const FormSignup = () => {
   const history = useHistory();
-  const captchaRef = React.createRef();
   const[username, setUserName] = useState('')
   const[password, setPassword] = useState('')
   const url = process.env.REACT_APP_API_URL;
   const [errorMessage, setErrorMessage] = useState('');
   const [captchaVerified, setCaptchaVerified] = useState(false);
 
+  console.log(captchaVerified);
   const nameChangeHandler = event => {
       setUserName(event.target.value)
       console.log(username)
@@ -28,16 +28,8 @@ const FormSignup = () => {
   console.log(process.env.REACT_APP_SECRET_KEY)
 
   const handleCaptchaChange = () => {
-    const token = captchaRef.current.getValue();
-    axios.post('https://www.google.com/recaptcha/api/siteverify', null, {
-      params: {
-        secret: '6LfLOXElAAAAAEYxcTErnVG5yW8gXy2htYQLZ2Zy',
-        response: token,
-      }
-    }).then((response) => {
-      setCaptchaVerified(response.data.success);
-    });
     setCaptchaVerified(true);
+    console.log(captchaVerified);
   };
 
 
@@ -46,7 +38,7 @@ const FormSignup = () => {
     const error = await validateLogin(username, password);
     setErrorMessage(error);
     if(!error){
-      history.push('/');
+      history.push('/HypeStoreFrontend');
       window.location.reload(false);
     }
   };

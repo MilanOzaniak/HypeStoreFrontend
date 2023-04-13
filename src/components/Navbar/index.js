@@ -88,7 +88,7 @@ const Navbar = ({toogle}) => {
               </li>
               <div className='dropdown-content'>
                 <Link to={`/currentUser/${currentUser}`}>Profile</Link>
-                <Link to='/' onClick={handleLogOut}>Log Out</Link>
+                <Link to='/HypeStoreFrontend' onClick={handleLogOut}>Log Out</Link>
                 <PopupPassword/>
                 <PopupSocial/>
               </div>
