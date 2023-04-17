@@ -8,7 +8,7 @@
   margin: 100px auto;
   width: 450px;
   height: 450px;
-  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 5px 5px 20px 5px rgba(0, 0, 0, 0.4);
   position: relative;
   border-radius: 5px;
   display:grid;
@@ -81,4 +81,10 @@
   font-size: 15px;
   z-index: 1;
   cursor: pointer;
+}
+
+@media screen and (max-width: 500px) {
+  .form-content {
+    width: 80%;
+  }
 }

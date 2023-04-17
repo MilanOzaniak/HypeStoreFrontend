@@ -4,17 +4,25 @@ import faq from '../../images/faq.jpg'
 
 const dataCollection = [
   {
-    question: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry ?',
+    question: 'Aké sú poplatky za predaj na webovom bazári?',
+    answer: 'Na našom bazáre nevyžadujeme platbu za pridanie produktu alebo vytvorenie použivateľského konta. '
+  }, {
+    question: 'Ako zabezpečuje webový bazár bezpečnosť mojich údajov?',
     answer: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. '
   }, {
-    question: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry ?',
-    answer: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. '
+    question: 'Ako nájsť konkrétny tovar na webovom bazári?',
+    answer: 'Na našom bazáre máme kategórie v ktorých nájdete dané produkty a každá kategória obsahuje filter, kde si môžte vyhladať konkrétne produkt. '
   }, {
-    question: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry?',
-    answer: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. '
-  }, {
-    question: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry ?',
-    answer: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. '
+    question: 'Ako zabezpečiť, aby som nekúpil falšovaný tovar na webovom bazári?',
+    answer: 'Každý profil použivateľa obsahuje komentáre kde si môžte pozrieť či uživateľ náhodou nepredáva falšovany tovar. '
+  },
+  {
+    question: 'Aké typy tovaru sa môžu predávať na webovom bazári?',
+    answer:'Náš bazár je zameraný na predaj oblečenia, topánok a doplnkov.'
+  },
+  {
+    question: 'Ako sa vykonáva platba na webovom bazári?',
+    answer:'Na platbe sa musite dohodnút s predajcom.'
   }
 ];
 
@@ -35,7 +43,7 @@ function Faquestion() {
       <img src={faq} className="faq" alt='faq'/>
       <div className='accordion_all'>
         <div>
-          <span className="accordion__title">FAQ</span>
+          <span className="accordion__title">Často kladené otázky</span>
         </div>
         <div className="accordion__faq">
           { dataCollection.map((item, index) =>

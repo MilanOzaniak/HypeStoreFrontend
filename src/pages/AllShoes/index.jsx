@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 import { useEffect } from 'react';
 import axios from 'axios';
 import { DragHandle } from '@material-ui/icons';
+import { FaStar, FaTrash, FaEdit, FaBookmark } from 'react-icons/fa';
+
 
 const ShoesPage = () => {
   const [resultsFound, setResultsFound] = useState(true);
@@ -16,6 +18,17 @@ const ShoesPage = () => {
   const [checkedLowest, setCheckedLowest ] = useState(false);
   const [checkedHighest, setCheckedHighest ] = useState(false);
   const [size, setSize] = useState('');
+  const token = localStorage.getItem("token");
+
+  const handleMouseOver = (i) => {
+    var element = document.getElementById(i);
+    element.classList.add("visible")
+  };
+
+  const handleMouseLeave = (i) => {
+    var element = document.getElementById(i);
+    element.classList.remove("visible");
+  };
 
 
   useEffect(() => {
@@ -75,16 +88,29 @@ const ShoesPage = () => {
       });
     }
   }
+
+  function favItemHandler (id){
+    let data = new FormData();
+    data.append("id", id);
+
+    axios.post(url + "/user/addFavItem", data, {
+      headers:{"Authorization" : `Bearer ${token}`}}).then(()=>{
+        console.log("sadas")
+      })
+  }
+
+  function resItemHandler (id){
+    let data = new FormData();
+    data.append("id", id);
+
+    axios.post(url + "/user/reserveItem", data, {
+      headers:{"Authorization" : `Bearer ${token}`}}).then(()=>{
+        console.log("sadas")
+      })
+  }
    
   return (
     <div className='home'>
-      <div className='asd'>
-        {/* Search Bar */}
-        <SearchBar
-          value={searchInput}
-          changeInput={(e) => setSearchInput(e.target.value)}
-        />
-        </div>
         <div className='filter-main'>
         <div className='cd-filter'>
 			<h3>Filters</h3>
@@ -99,7 +125,7 @@ const ShoesPage = () => {
 					<div class="select filters">
 						<select class="filter" name="selectThis" id="selectThis">
 							<optgroup label="Veľkosť topanok">
-								<option value="">Choose size</option>
+								<option value="">Vyber veľkosť</option>
 								<option value=".option1">34</option>
 								<option value=".option2">35</option>
 								<option value=".option3">36</option>
@@ -134,7 +160,7 @@ const ShoesPage = () => {
 					<div class="select filters">
 						<select class="filter" name="selectThis" id="selectThis">
 							<optgroup label="Slovenské kraje">
-								<option value="">Choose town</option>
+								<option value="">Vyber mesto</option>
 								<option value=".option1">Žilinský kraj</option>
 								<option value=".option2">Bratislavský kraj</option>
 								<option value=".option3">Banskobystrický kraj</option>
@@ -165,45 +191,47 @@ const ShoesPage = () => {
 				</div> 
 			</div>
             <div class="filter-block">
-					<h4 className='nazov1'>Sort by</h4>
+					<h4 className='nazov1'>Zoraď podľa</h4>
 					<ul class="content-filter1 filters list">
 						<li>
 							<input class="filter" data-filter=".check1" type="checkbox" id="checkbox1"></input>
-							<label class="checkbox-label" for="checkbox1">Lowest Price</label>
+							<label class="checkbox-label" for="checkbox1">Najnižšia cena</label>
 						</li>
               <li>
 							<input class="filter" data-filter=".check2" type="checkbox" id="checkbox2"></input>
-							<label class="checkbox-label" for="checkbox2">Highest Price</label>
+							<label class="checkbox-label" for="checkbox2">Najvyššia cena</label>
 						</li>
 						<li>
 							<input class="filter" data-filter=".check3" type="checkbox" id="checkbox3"></input>
-							<label class="checkbox-label" for="checkbox3">Newest Arrivals</label>
+							<label class="checkbox-label" for="checkbox3">Najnovšie produkty</label>
 						</li>
               <li>
 							<input class="filter" data-filter=".check4" type="checkbox" id="checkbox4"></input>
-							<label class="checkbox-label" for="checkbox4">Latest Arrivals</label>
+							<label class="checkbox-label" for="checkbox4">Najstaršie produkty</label>
 						</li>
 					</ul>
 			</div>
 			<div className='btn-clear-all'>
-				<button>Clear Filters</button>
+				<button>Vyčisti Filtre</button>
 			</div>
         </div>
     </div>
 
-
-
-
-
-
-
       <div className='list-wrap'>
         {item? (item.map((data) =>
           {return (
-            <div className='listItem-wrap' key={data.id}>
-              <Link to={`/shoes/${data.id}`}>
-                <img className='img-box' src={data.imageNames ? url + "/item/getImage/" + data.imageNames[0] : null} alt=''/>
-              </Link>
+            <div className='listItem-wrap' key={data.id}
+			onMouseOver={()=>handleMouseOver(data.id)}
+			onMouseLeave={()=>handleMouseLeave(data.id)}>
+
+				{(<div className= 'top-row' id={`${data.id}`}>
+					<FaStar onClick={()=>favItemHandler(data.id)} className='star'></FaStar>
+                  <FaBookmark onClick={()=>resItemHandler(data.id)} className='edit'></FaBookmark>
+                </div>)}
+
+            <Link to={`/shoes/${data.id}`}>
+            	<img className='img-box' src={data.imageNames ? url + "/item/getImage/" + data.imageNames[0] : null} alt=''/>
+            </Link>
               <h4>{data.title}</h4>
               <b>${data.price}</b>
             </div>

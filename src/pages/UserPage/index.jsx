@@ -5,6 +5,9 @@ import axios from 'axios';
 import image from '../../images/pic.png'
 import { Link, useParams } from "react-router-dom";
 import {FaFacebookSquare, FaInstagram} from 'react-icons/fa';
+import { FaStar, FaTrash, FaEdit, FaBookmark } from 'react-icons/fa';
+import { faEdit, faFlag } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 
@@ -22,6 +25,16 @@ const UserPage = () =>{
             setCurrentUser(response.data);
         })
     }, [])
+
+    const handleMouseOver = (i) => {
+        var element = document.getElementById(i);
+        element.classList.add("visible")
+      };
+    
+      const handleMouseLeave = (i) => {
+        var element = document.getElementById(i);
+        element.classList.remove("visible");
+      };
 
     console.log(currentUser)
     const handleComment = event =>{
@@ -51,6 +64,9 @@ const UserPage = () =>{
     return(
         <div>
             <div className='container1'>
+            <div className="userbutton">
+                    <a className="nahlasit" href="/nahlasit"><FontAwesomeIcon icon={faFlag} /></a>
+                </div>
                 <div className='profile-details1'>
                     <div className='pd-row1'>
                         <div className='left1'>
@@ -89,7 +105,15 @@ const UserPage = () =>{
             <div className='list-wrap' style = {{display: isVisible ? 'none' : 'grid' }}>
                 {currentUser.items? (currentUser.items.map((data) =>
                     {return (
-                    <div className='listItem-wrap' key={data.id}>
+                    <div className='listItem-wrap' key={data.id}
+                    onMouseOver={()=>handleMouseOver(data.id)}
+                    onMouseLeave={()=>handleMouseLeave(data.id)}>
+
+                         {(<div className= 'top-row' id={`${data.id}`}>
+                            <FaStar className='star'></FaStar>
+                            <FaBookmark className='edit'></FaBookmark>
+                        </div>)}
+
                         <Link to={`/clothing/${data.id}`}>
                             <img className='img-box' src={data.imageNames ? url + "/item/getImage/" + data.imageNames[0] : null} alt=''/>
                         </Link>

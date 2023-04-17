@@ -6,18 +6,31 @@ import './CurrentUserPage.css';
 import { Link } from "react-router-dom";
 import ProfileImage from "../../components/ProfilImage";
 import {FaFacebookSquare, FaInstagram} from 'react-icons/fa';
+import { FaStar, FaTrash, FaEdit, FaBookmark } from 'react-icons/fa';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit, faFlag } from '@fortawesome/free-solid-svg-icons';
 
 const CurrentUserPage = () =>{
     const [currentUser, setCurrentUser] = useState('');
     const [items, setItems] = useState('');
     const [comments, setComments] = useState('');
     const [isVisible, setIsVisible] = useState(false);
+    const [isFavorite, setIsFavorite] = useState(false);
+    const [isReserved, setIsReserved] = useState(false);
     const url = process.env.REACT_APP_API_URL;
     const userName = localStorage.getItem("userName");
     const token = localStorage.getItem("token");
-    
 
-    console.log(currentUser);
+    const handleMouseOver = (i) => {
+        var element = document.getElementById(i);
+        element.classList.add("visible")
+      };
+    
+      const handleMouseLeave = (i) => {
+        var element = document.getElementById(i);
+        element.classList.remove("visible");
+      };
+
     useEffect( () =>{
         axios.get(url + "/user/getUser/" + userName).then((response)=>{
             setCurrentUser(response.data);
@@ -28,32 +41,55 @@ const CurrentUserPage = () =>{
     }, [])
 
     function handleDelete (e) {
-        axios.get(url + "/item/del/" + e, {headers:{"Authorization" : `Bearer ${token}`}})
+        let data = new FormData();
+        data.append("id", e)
+        axios.post(url + "/item/del", data,  {headers:{"Authorization" : `Bearer ${token}`}})
         .then(()=>{
             window.location.reload(false);
         })
         
     }
 
+    function handleDelFavorite(e){
+        let data = new FormData();
+        data.append("id", e)
+        axios.post(url + "/user/removeFavItem", data, {headers:{"Authorization" : `Bearer ${token}`}})
+        .then(window.location.reload(false));
+    }
+
+    function handleDelReserved(e){
+        let data = new FormData();
+        data.append("id", e)
+        axios.post(url + "/user/removeReservedItem", data, {headers:{"Authorization" : `Bearer ${token}`}})
+        .then(//window.location.reload(false)
+        );
+    }
+
     console.log(comments)
 
     function handleProducts (e){
         setItems(currentUser.items)
-        setIsVisible(false)
+        setIsVisible(false);
+        setIsFavorite(false);
+        setIsReserved(false);
     }
 
     function handleFavorite (e){
         setItems(currentUser.favItems)
         setIsVisible(false)
+        setIsFavorite(true);
     }
 
     function handleReserved (e){
         setItems(currentUser.reservedItems)
         setIsVisible(false)
+        setIsReserved(true);
+        setIsFavorite(false);
     }
 
     function handleComments (){
         setIsVisible(true)
+        setIsReserved(false);
     }
 
     console.log(currentUser);
@@ -61,6 +97,9 @@ const CurrentUserPage = () =>{
     return(
         <div>
             <div className='container1'>
+                <div className="userbutton">
+                    <a className="editbutton" ><FontAwesomeIcon icon={faEdit}/></a>
+                </div>
                 <div className='profile-details1'>
                 <ProfileImage/>
                     <div className='pd-row1'>
@@ -98,7 +137,17 @@ const CurrentUserPage = () =>{
                 {items? (items.map((data) =>
                     {return (
                         
-                    <div className='listItem-wrap' key={data.id}>
+                    <div className='listItem-wrap' key={data.id}
+                        onMouseOver={()=>handleMouseOver(data.id)}
+                        onMouseLeave={()=>handleMouseLeave(data.id)}>
+
+                        {(<div className='top-row' id={`${data.id}`}>
+                            <FaTrash onClick={()=>handleDelete(data.id)} style = {{display: isFavorite ? 'none' : 'block', display: isReserved ? 'none' : 'block' }} className='trash'></FaTrash>
+                            <FaEdit style = {{display: isFavorite ? 'none' : 'block', display: isReserved ? 'none' : 'block' }} className='edit'></FaEdit>
+                            <FaStar onClick={() => handleDelFavorite(data.id)} style = {{display: isFavorite ? 'block' : 'none' , color: isFavorite ? 'yellow' : 'white'}} className='star'></FaStar>
+                            <FaBookmark onClick={()=>handleDelReserved(data.id)} style = {{display: isReserved ? 'block' : 'none' , display: isFavorite ? 'none' : 'block'}} className='edit'></FaBookmark>
+                        </div> )}
+
                         <Link to={`/clothing/${data.id}`}>
                             <img className='img-box' src={data.imageNames ? url + "/item/getImage/" + data.imageNames[0] : null} alt=''/>
                         </Link>
@@ -107,7 +156,6 @@ const CurrentUserPage = () =>{
                                 <h4 className="data_title">{data.title}</h4>
                                 <b>${data.price}</b>
                             </div>
-                            <button className= "close" onClick={() => handleDelete(data.id)}>X</button>
                         </div>
 
                      </div>

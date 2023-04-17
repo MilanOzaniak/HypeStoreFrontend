@@ -1,10 +1,11 @@
 .container_avatar{
+    position: relative;
     width: 180px;
     height: 180px;
     border-radius: 10px;
-    background: #252525;
+    background: #1B1C1E;
     margin: 30px;
-    margin-left: 90px;
+    margin-left: 4.5vw;
 }
 .imgpic-holder{
     margin: auto;
@@ -24,11 +25,12 @@
 #input[type="file"] {
     display: none;
 }
-.label1{
-    width: 100%;
-    margin-top: 1rem;
-    display: flex;
-    justify-content: center;
+.image-upload {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 .editicon{
     position: absolute;

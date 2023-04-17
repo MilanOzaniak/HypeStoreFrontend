@@ -37,8 +37,7 @@ const Footer = () => {
         </div>
         <div class="footer-right">
             <p class="footer-company-about">
-                <span>O nás</span>
-                Nieco vymysliet
+                "Oživte svoj šatník a zarobte si peniaze! S našou stránkou môžete jednoducho a bez problémov predať svoje oblečenie, topánky a doplnky. Buďte súčasťou našej komunity a premeňte vaše nadbytočné veci na hotovosť."
             </p>
             <div class="footer-icons">
                 <a href="#"><FaInstagram></FaInstagram></a>

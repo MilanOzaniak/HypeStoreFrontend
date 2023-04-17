@@ -4,10 +4,6 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { FaBars, FaTimes } from "react-icons/fa";
 
-
-
-
-
 const Navbar = ({toogle}) => {
   const currentUser = localStorage.getItem("userName");
   const [isVisible] = useState(currentUser === null);
@@ -45,24 +41,27 @@ const Navbar = ({toogle}) => {
           <li className='nav-item'>
             <Link to='/accessories' className='nav-links'onClick={toggleMenu}> Doplnky</Link>
           </li>
-          <div className='dropdown'>
-            <li className='dropbtn' style={{display: isVisible? 'block' : 'none'}}>
-              <Link className='dropbtn' to='/signup'>Log in</Link>
-            </li>
-            <div className='drop' onClick={toggleMenu}> 
-              <a className="dropbtn" >{currentUser}</a>
-              <div className='dropdown-content' onClick={toggleMenu}>
-                <Link to={`/currentUser/${currentUser}`}>Profile</Link>
-                <Link to={`/Options/${currentUser}`}>Options</Link>
-                <Link to='/' onClick={handleLogOut}>Log Out</Link>
+          <li className='nav-item'>
+            <div className='dropdown'>
+              <li className='dropbtn' style={{display: isVisible? 'block' : 'none'}}>
+                <Link className='dropbtn' to='/signup'>Log in</Link>
+              </li>
+              <div className='drop' onClick={toggleMenu} style={{display: !isVisible? 'block' : 'none'}}> 
+                <a className="dropbtn" >{currentUser}</a>
+                <div className='dropdown-content' onClick={toggleMenu}>
+                  <Link to={`/currentUser/${currentUser}`}>Profile</Link>
+                  <Link to={`/Options/${currentUser}`}>Options</Link>
+                  <Link to='/' onClick={handleLogOut}>Log Out</Link>
+                </div>
               </div>
             </div>
+          </li>
+          <li className='nav-item'>
+          <div className='addproduct-button' style={{display: isVisible? 'none' : 'block'}}>
+            <Link to={'/createitempage'} className='btn'>Pridať&nbsp;produkt</Link>
           </div>
+          </li>
         </ul>
-
-        <div className='addproduct-button' style={{display: isVisible? 'none' : 'block'}}>
-          <Link to={'/createitempage'} className='btn'>Pridať&nbsp;produkt</Link>
-        </div>
       </nav>
     </>
   );

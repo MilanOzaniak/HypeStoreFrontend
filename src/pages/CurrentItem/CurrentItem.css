@@ -27,28 +27,30 @@
     
 }
 .product_small_img img{
-    height: 170px;
+    max-height: 170px;
+    width: auto;
     margin: 10px 0;
     cursor: pointer;
     display: block;
 }
 .product_small_img {
     float: left;
-    height: 650px;
 }
 .img_container img{
     height: 700px;
     width: 700px;
     padding: 30px;
     margin-top: 10px;
+    object-fit: contain;
 }
 
 .product_small_img img:hover{
     opacity: 1;
 }
 
-.product .img_container{
+.product1 .img_container{
     float:right;
+    height: 650px;
 }
 
 .product1{
@@ -162,6 +164,7 @@ a:link { text-decoration: none; }
     img {
       width: 100%;
       height: 100%;
+      
     }
   
     .option {

@@ -36,10 +36,8 @@ function ProfileImage(){
 					</div>
 					<input type="file" accept="image/*" name="image-upload" id="input" onChange={imageHandler} />
 					<div className="label1">
-                        <label className="image-upload" htmlFor="input">
-						    <span className="editicon"><BiEdit/></span>
-					    </label>
-                    </div>
+              <label className="image-upload" htmlFor="input"/>
+          </div>
 				</div>
 			</div>
 		);
