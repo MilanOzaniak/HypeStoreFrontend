@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/HypeStoreFrontend/static/css/main.67eff639.css",
-    "main.js": "/HypeStoreFrontend/static/js/main.93f7b60a.js",
+    "main.css": "/HypeStoreFrontend/static/css/main.5a6f7160.css",
+    "main.js": "/HypeStoreFrontend/static/js/main.96fec5d4.js",
     "static/js/787.d7232bc1.chunk.js": "/HypeStoreFrontend/static/js/787.d7232bc1.chunk.js",
     "static/media/streetwear2.jpg": "/HypeStoreFrontend/static/media/streetwear2.613ee6f18f67a4515ced.jpg",
     "static/media/streetwear.jpg": "/HypeStoreFrontend/static/media/streetwear.e60013eacdacbf448f92.jpg",
@@ -9,12 +9,12 @@
     "static/media/faq.jpg": "/HypeStoreFrontend/static/media/faq.2eda4c22357c68f20d3b.jpg",
     "static/media/pic.png": "/HypeStoreFrontend/static/media/pic.576e7907f511285efe5b.png",
     "index.html": "/HypeStoreFrontend/index.html",
-    "main.67eff639.css.map": "/HypeStoreFrontend/static/css/main.67eff639.css.map",
-    "main.93f7b60a.js.map": "/HypeStoreFrontend/static/js/main.93f7b60a.js.map",
+    "main.5a6f7160.css.map": "/HypeStoreFrontend/static/css/main.5a6f7160.css.map",
+    "main.96fec5d4.js.map": "/HypeStoreFrontend/static/js/main.96fec5d4.js.map",
     "787.d7232bc1.chunk.js.map": "/HypeStoreFrontend/static/js/787.d7232bc1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.67eff639.css",
-    "static/js/main.93f7b60a.js"
+    "static/css/main.5a6f7160.css",
+    "static/js/main.96fec5d4.js"
   ]
 }
