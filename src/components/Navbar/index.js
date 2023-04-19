@@ -49,7 +49,7 @@ const Navbar = ({toogle}) => {
               <div className='drop' onClick={toggleMenu} style={{display: !isVisible? 'block' : 'none'}}> 
                 <a className="dropbtn" >{currentUser}</a>
                 <div className='dropdown-content' onClick={toggleMenu}>
-                  <Link to={`/HypeStoreFrontend/currentUser/${currentUser}`}>Profile</Link>
+                  <Link to={`/HypeStoreFrontend/profile/${currentUser}`}>Profile</Link>
                   <Link to={`/HypeStoreFrontend/Options/${currentUser}`}>Options</Link>
                   <Link to='/HypeStoreFrontend/' onClick={handleLogOut}>Log Out</Link>
                 </div>
