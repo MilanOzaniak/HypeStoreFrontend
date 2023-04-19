@@ -49,7 +49,7 @@ const FormSignup = () => {
     setErrors(error)
     if(valid){
       axios.post(url + "/register", user);
-      history.push("/Signup")
+      history.push("/HypeStoreFrontend/Signup")
     }
 
   };

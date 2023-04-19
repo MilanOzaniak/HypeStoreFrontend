@@ -20,19 +20,19 @@ function App() {
     <Router>
       <Navbar/>
         <Switch>
-          <Route exact path='/'> <Home/> </Route>
-          <Route exact path='/shoes'> <ShoesPage/> </Route>
-          <Route exact path='/clothing'> <ClothingPage/> </Route>
-          <Route exact path='/accessories'> <AccessoriesPage/> </Route>
-          <Route path='/signup'> <SignUp/> </Route>
-          <Route path='/register'> <Formm/> </Route>
-          <Route exact path='/createitempage'><AddProductPage/> </Route>
-          <Route exact path="/shoes/:id"><CurrentItem/></Route>
-          <Route exact path="/clothing/:id"><CurrentItem/></Route>
-          <Route exact path="/:id"><CurrentItem/></Route>
-          <Route exact path="/user/:userName"><UserPage/></Route>
-          <Route exact path="/currentUser/:userName"><CurrentUserPage/></Route>
-          <Route exact path="/editProfile/:id"><Editprofile/></Route>
+          <Route exact path='/HypeStoreFrontend/'> <Home/> </Route>
+          <Route exact path='/HypeStoreFrontend/shoes'> <ShoesPage/> </Route>
+          <Route exact path='/HypeStoreFrontend/clothing'> <ClothingPage/> </Route>
+          <Route exact path='/HypeStoreFrontend/accessories'> <AccessoriesPage/> </Route>
+          <Route path='/HypeStoreFrontend/login'> <SignUp/> </Route>
+          <Route path='/HypeStoreFrontend/register'> <Formm/> </Route>
+          <Route exact path='/HypeStoreFrontend/createitempage'><AddProductPage/> </Route>
+          <Route exact path="/HypeStoreFrontend/shoes/:id"><CurrentItem/></Route>
+          <Route exact path="/HypeStoreFrontend/clothing/:id"><CurrentItem/></Route>
+          <Route exact path="/HypeStoreFrontend/:id"><CurrentItem/></Route>
+          <Route exact path="/HypeStoreFrontend/user/:userName"><UserPage/></Route>
+          <Route exact path="/HypeStoreFrontend/profile/:userName"><CurrentUserPage/></Route>
+          <Route exact path="/HypeStoreFrontend/editProfile/:id"><Editprofile/></Route>
         </Switch>
       <Footer/>
     </Router> 

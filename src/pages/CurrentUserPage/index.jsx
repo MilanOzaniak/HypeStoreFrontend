@@ -98,7 +98,7 @@ const CurrentUserPage = () =>{
         <div>
             <div className='container1'>
                 <div className="userbutton">
-                    <Link to={`/editProfile/${currentUser.id}`}><a className="editbutton" ><FontAwesomeIcon icon={faEdit}/></a> </Link>
+                    <Link to={`/HypeStoreFrontend/editProfile/${currentUser.id}`}><a className="editbutton" ><FontAwesomeIcon icon={faEdit}/></a> </Link>
                 </div>
                 <div className='profile-details1'>
                     <ProfileImage/>
@@ -148,7 +148,7 @@ const CurrentUserPage = () =>{
                             <FaBookmark onClick={()=>handleDelReserved(data.id)} style = {{display: isReserved ? 'block' : 'none' , display: isFavorite ? 'none' : 'block'}} className='edit'></FaBookmark>
                         </div> )}
 
-                        <Link to={`/clothing/${data.id}`}>
+                        <Link to={`/HypeStoreFrontend/${data.id}`}>
                             <img className='img-box' src={data.imageNames ? url + "/item/getImage/" + data.imageNames[0] : null} alt=''/>
                         </Link>
                         <div className="description">
@@ -170,7 +170,7 @@ const CurrentUserPage = () =>{
                         <div className='user'>
                             <div className='user-image'><img src={data.profilePic ? url + "/user/getImage/" + data.profilePic : null} className="faq" alt=''/></div>
                             <div className='user-meta'>
-                                <Link to={`/user/${data.ownerName}`} className='name'>{data.ownerName}</Link>
+                                <Link to={`/HypeStoreFrontend/user/${data.ownerName}`} className='name'>{data.ownerName}</Link>
                                 <div className='day'>{data.date}</div>
                             </div>
                         </div>

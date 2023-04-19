@@ -25,7 +25,7 @@ const Navbar = ({toogle}) => {
   return (
     <>
       <nav className='navbar'>
-        <Link to='/' className='navbar-logo'>
+        <Link to='/HypeStoreFrontend/' className='navbar-logo'>
             HYPESTORE
         </Link>
         <div className='menu-icon' onClick={toggleMenu}>
@@ -33,32 +33,32 @@ const Navbar = ({toogle}) => {
         </div>
         <ul className={isOpen ? "nav-menu active" : "nav-menu"}>
           <li className='nav-item'>
-            <Link to='/Shoes' className='nav-links'onClick={toggleMenu}>Topánky</Link>
+            <Link to='/HypeStoreFrontend/Shoes' className='nav-links'onClick={toggleMenu}>Topánky</Link>
           </li>
           <li className='nav-item'>
-            <Link to='/clothing' className='nav-links'onClick={toggleMenu} > Oblečenie</Link>
+            <Link to='/HypeStoreFrontend/clothing' className='nav-links'onClick={toggleMenu} > Oblečenie</Link>
           </li>
           <li className='nav-item'>
-            <Link to='/accessories' className='nav-links'onClick={toggleMenu}> Doplnky</Link>
+            <Link to='/HypeStoreFrontend/accessories' className='nav-links'onClick={toggleMenu}> Doplnky</Link>
           </li>
           <li className='nav-item'>
             <div className='dropdown'>
               <li className='dropbtn' style={{display: isVisible? 'block' : 'none'}}>
-                <Link className='dropbtn' to='/signup'>Log in</Link>
+                <Link className='dropbtn' to='/HypeStoreFrontend/signup'>Log in</Link>
               </li>
               <div className='drop' onClick={toggleMenu} style={{display: !isVisible? 'block' : 'none'}}> 
                 <a className="dropbtn" >{currentUser}</a>
                 <div className='dropdown-content' onClick={toggleMenu}>
-                  <Link to={`/currentUser/${currentUser}`}>Profile</Link>
-                  <Link to={`/Options/${currentUser}`}>Options</Link>
-                  <Link to='/' onClick={handleLogOut}>Log Out</Link>
+                  <Link to={`/HypeStoreFrontend/currentUser/${currentUser}`}>Profile</Link>
+                  <Link to={`/HypeStoreFrontend/Options/${currentUser}`}>Options</Link>
+                  <Link to='/HypeStoreFrontend/' onClick={handleLogOut}>Log Out</Link>
                 </div>
               </div>
             </div>
           </li>
           <li className='nav-item'>
           <div className='addproduct-button' style={{display: isVisible? 'none' : 'block'}}>
-            <Link to={'/createitempage'} className='btn'>Pridať&nbsp;produkt</Link>
+            <Link to={'/HypeStoreFrontend/createitempage'} className='btn'>Pridať&nbsp;produkt</Link>
           </div>
           </li>
         </ul>

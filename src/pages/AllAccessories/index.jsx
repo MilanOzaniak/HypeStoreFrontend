@@ -79,7 +79,7 @@ const AccessoriesPage = () => {
                   <FaBookmark onClick={()=>resItemHandler(data.id)} className='edit'></FaBookmark>
                 </div>)}
 
-                <Link to={`/accessories/${data.id}`}>
+                <Link to={`/HypeStoreFrontend/accessories/${data.id}`}>
                   <img className='img-box' src={data.imageNames ? url + "/item/getImage/" + data.imageNames[0] : null} alt=''/>
                 </Link>
                 <h4>{data.title}</h4>

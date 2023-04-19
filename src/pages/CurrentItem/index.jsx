@@ -79,7 +79,7 @@ const CurrentItemPage = () =>{
                             </div>
                             <div className='profileInfo'>
                                 <div className="Name">
-                                    <Link to={`/user/${user.userName}`}><a>{user.userName}</a></Link>
+                                    <Link to={`/HypeStoreFrontend/user/${user.userName}`}><a>{user.userName}</a></Link>
                                 </div>
                                 <div className="Phonenumber">
                                     <a>{user.pnumber}</a>

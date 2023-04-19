@@ -30,7 +30,7 @@ const FormSignup = () => {
     const error = await validateLogin(username, password);
     setErrorMessage(error);
     if(!error){
-      history.push('/HypeStoreFrontend');
+      history.push('/HypeStoreFrontend/');
       window.location.reload(false);
     }
   };

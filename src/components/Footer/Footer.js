@@ -11,9 +11,9 @@ const Footer = () => {
             <h3>Hypestore</h3>
 
             <p class="footer-links">
-            <a href="/Shoes">Shoes</a>
-            <a href="/Clothing">Clothing</a>
-            <a href="/Accessories">Accessories</a>
+            <a href="/HypeStoreFrontend/Shoes">Shoes</a>
+            <a href="/HypeStoreFrontend/Clothing">Clothing</a>
+            <a href="/HypeStoreFrontend/Accessories">Accessories</a>
             <a  href="/Aboutus">About us</a>
             </p>
 

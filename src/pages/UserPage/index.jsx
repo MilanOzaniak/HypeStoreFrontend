@@ -112,7 +112,7 @@ const UserPage = () =>{
                             <FaBookmark className='edit'></FaBookmark>
                         </div>)}
 
-                        <Link to={`/clothing/${data.id}`}>
+                        <Link to={`/HypeStoreFrontend/clothing/${data.id}`}>
                             <img className='img-box' src={data.imageNames ? url + "/item/getImage/" + data.imageNames[0] : null} alt=''/>
                         </Link>
                         <header>
@@ -134,7 +134,7 @@ const UserPage = () =>{
                         <div className='user'>
                             <div className='user-image'><img src={data.profilePic ? url + "/user/getImage/" + data.profilePic : null} className="faq" alt=''/></div>
                             <div className='user-meta'>
-                                <Link to={`/user/${data.ownerName}`} className='name'>{data.ownerName}</Link>
+                                <Link to={`/HypeStoreFrontend/user/${data.ownerName}`} className='name'>{data.ownerName}</Link>
                                 <div className='day'>{data.date}</div>
                             </div>
                         </div>

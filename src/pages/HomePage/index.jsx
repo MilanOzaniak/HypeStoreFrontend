@@ -71,7 +71,7 @@ const Home = () => {
                   <FaBookmark onClick={()=>resItemHandler(data.id)} className='edit'></FaBookmark>
                 </div>
 
-                <Link to={`/${data.id}`}>
+                <Link to={`/HypeStoreFrontend/${data.id}`}>
                   <img className='img-box' src={url + "/item/getImage/" + data.imageNames[0]} alt=''/>
                 </Link>
                 <h4>{data.title}</h4>
