@@ -44,7 +44,7 @@ const Navbar = ({toogle}) => {
           <li className='nav-item'>
             <div className='dropdown'>
               <li className='dropbtn' style={{display: isVisible? 'block' : 'none'}}>
-                <Link className='dropbtn' to='/HypeStoreFrontend/signup'>Log in</Link>
+                <Link className='dropbtn' to='/HypeStoreFrontend/login'>Log in</Link>
               </li>
               <div className='drop' onClick={toggleMenu} style={{display: !isVisible? 'block' : 'none'}}> 
                 <a className="dropbtn" >{currentUser}</a>

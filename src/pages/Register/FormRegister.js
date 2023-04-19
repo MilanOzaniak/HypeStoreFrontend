@@ -49,7 +49,7 @@ const FormSignup = () => {
     setErrors(error)
     if(valid){
       axios.post(url + "/register", user);
-      history.push("/HypeStoreFrontend/Signup")
+      history.push("/HypeStoreFrontend/login")
     }
 
   };
@@ -131,7 +131,7 @@ const FormSignup = () => {
         </div>
 
         <span className='form-input-login'>
-          Already have an account? Login <a href='/Signup'>here.</a>
+          Already have an account? Login <a href='/HypeStoreFrontend/login'>here.</a>
         </span>
       </form>
     </div>
