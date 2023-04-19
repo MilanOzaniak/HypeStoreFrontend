@@ -23,7 +23,7 @@ function ProfileImage(){
     let data = new FormData();
     data.append("image", e.target.files[0])
 
-    axios.post(url + "/user/setProfileImage/", data, {
+    axios.post(url + "/user/setProfileImage", data, {
       headers:{"Authorization" : `Bearer ${token}`}}).then((response)=>{
         setProfilePic(data.get("image").name)
     })

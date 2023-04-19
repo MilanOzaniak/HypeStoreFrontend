@@ -19,7 +19,6 @@ const Navbar = ({toogle}) => {
 
   function handleLogOut(){
     localStorage.clear();
-    window.location.href = "/";
   }
 
   return (

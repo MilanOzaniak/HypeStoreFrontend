@@ -43,7 +43,7 @@ const CurrentUserPage = () =>{
     function handleDelete (e) {
         let data = new FormData();
         data.append("id", e)
-        axios.post(url + "/item/del", data,  {headers:{"Authorization" : `Bearer ${token}`}})
+        axios.post(url + "/item/del", data, {headers:{"Authorization" : `Bearer ${token}`}})
         .then(()=>{
             window.location.reload(false);
         })
@@ -92,6 +92,14 @@ const CurrentUserPage = () =>{
         setIsReserved(false);
     }
 
+    function handleFacebook(){
+        window.open(currentUser.facebook, "_blank");
+    }
+
+    function handleInstagram(){
+        window.open(currentUser.instagram, "_blank");
+    }
+
     console.log(currentUser);
 
     return(
@@ -115,10 +123,10 @@ const CurrentUserPage = () =>{
                             </div>
                             <div className="socials">
                                 <a className="instagram" href="" title="Instagram">
-                                <span href={currentUser.instagram} className="instagramicon"><FaInstagram></FaInstagram></span>
+                                <span className="instagramicon"><FaInstagram onClick={handleInstagram}></FaInstagram></span>
                                 </a>
                                 <a className="facebook" href="" title="Facebook">
-                                <span className="facebookicon"><FaFacebookSquare href={currentUser.facebook}></FaFacebookSquare></span>
+                                <span className="facebookicon"><FaFacebookSquare onClick={handleFacebook}></FaFacebookSquare></span>
                                 </a>
                             </div>
                         </div>
