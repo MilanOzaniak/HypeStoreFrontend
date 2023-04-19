@@ -98,10 +98,10 @@ const CurrentUserPage = () =>{
         <div>
             <div className='container1'>
                 <div className="userbutton">
-                    <a className="editbutton" ><FontAwesomeIcon icon={faEdit}/></a>
+                    <Link to={`/editProfile/${currentUser.id}`}><a className="editbutton" ><FontAwesomeIcon icon={faEdit}/></a> </Link>
                 </div>
                 <div className='profile-details1'>
-                <ProfileImage/>
+                    <ProfileImage/>
                     <div className='pd-row1'>
                         <div className='Info'>
                             <div className='Profile-Info1'>
@@ -115,10 +115,10 @@ const CurrentUserPage = () =>{
                             </div>
                             <div className="socials">
                                 <a className="instagram" href="" title="Instagram">
-                                <span className="instagramicon"><FaInstagram></FaInstagram></span>
+                                <span href={currentUser.instagram} className="instagramicon"><FaInstagram></FaInstagram></span>
                                 </a>
                                 <a className="facebook" href="" title="Facebook">
-                                <span className="facebookicon"><FaFacebookSquare></FaFacebookSquare></span>
+                                <span className="facebookicon"><FaFacebookSquare href={currentUser.facebook}></FaFacebookSquare></span>
                                 </a>
                             </div>
                         </div>

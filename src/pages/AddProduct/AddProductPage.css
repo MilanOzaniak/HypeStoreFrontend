@@ -145,3 +145,9 @@
   text-align: center;
   box-shadow: 5px 5px 20px 5px rgba(0, 0, 0, 0.3);
 }
+
+.errors{
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  color: #f00e0e;
+}

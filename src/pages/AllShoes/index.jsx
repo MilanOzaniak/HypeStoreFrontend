@@ -143,14 +143,14 @@ const ShoesPage = () => {
 								<option value=".option17">48</option>
 								<option value=".option17">49</option>
 							</optgroup>
-								<optgroup label="Veľkost veci">
-									<option value=".option18">XS</option>
-									<option value=".option18">S</option>
-									<option value=".option18">M</option>
-									<option value=".option18">L</option>
-									<option value=".option18">XL</option>
-									<option value=".option18">XXL</option>
-								</optgroup>
+							<optgroup label="Veľkost veci">
+								<option value=".option18">XS</option>
+								<option value=".option18">S</option>
+								<option value=".option18">M</option>
+								<option value=".option18">L</option>
+								<option value=".option18">XL</option>
+								<option value=".option18">XXL</option>
+							</optgroup>
 						</select>
 					</div> 
 				</div> 

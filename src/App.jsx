@@ -13,6 +13,8 @@ import ClothingPage from './pages/AllClothing';
 import CurrentUserPage from './pages/CurrentUserPage';
 import Footer from './components/Footer/Footer'
 import Navbar from './components/Navbar';
+import Editprofile from './pages/Editprofile/Editprofile';
+
 function App() {
   return (
     <Router>
@@ -30,6 +32,7 @@ function App() {
           <Route exact path="/:id"><CurrentItem/></Route>
           <Route exact path="/user/:userName"><UserPage/></Route>
           <Route exact path="/currentUser/:userName"><CurrentUserPage/></Route>
+          <Route exact path="/editProfile/:id"><Editprofile/></Route>
         </Switch>
       <Footer/>
     </Router> 

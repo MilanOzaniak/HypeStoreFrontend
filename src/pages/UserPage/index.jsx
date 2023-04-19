@@ -8,6 +8,7 @@ import {FaFacebookSquare, FaInstagram} from 'react-icons/fa';
 import { FaStar, FaTrash, FaEdit, FaBookmark } from 'react-icons/fa';
 import { faEdit, faFlag } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import ProfileImage from "../../components/ProfilImage";
 
 
 
@@ -68,19 +69,17 @@ const UserPage = () =>{
                     <a className="nahlasit" href="/nahlasit"><FontAwesomeIcon icon={faFlag} /></a>
                 </div>
                 <div className='profile-details1'>
+                    <ProfileImage/>
                     <div className='pd-row1'>
-                        <div className='left1'>
-                            <img src={url + "/user/getImage/" + currentUser.profileImage} className='pd-image1'></img>
-                        </div>
-                        <div className='right1'>
+                        <div className='Info'>
                             <div className='Profile-Info1'>
-                                <h3>{currentUser.userName}</h3>
+                                {currentUser.userName}
                             </div>
                             <div className='Profile-Email1'>
-                                <h3>{currentUser.email}</h3>
+                                {currentUser.email}
                             </div>
                             <div className='Profile-Number1'>
-                                <h3>{currentUser.pnumber}</h3>
+                                {currentUser.pnumber}
                             </div>
                             <div className="socials">
                                 <a className="instagram" href="" title="Instagram">
@@ -90,7 +89,6 @@ const UserPage = () =>{
                                 <span className="facebookicon"><FaFacebookSquare></FaFacebookSquare></span>
                                 </a>
                             </div>
-                            
                         </div>
                     </div>
                 </div>

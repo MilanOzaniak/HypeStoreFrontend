@@ -52,11 +52,11 @@ const FormSignup = () => {
   async function validateLogin(username, password) {
 
     if (!username || !password) {
-      return 'Please enter both username and password';
+      return 'Please enter both username and password!';
     }
 
     if (!captchaVerified) {
-      return 'Please verify that you are not a robot';
+      return 'Please verify that you are not a robot!';
     }
 
     try {

@@ -3,6 +3,7 @@ import './AddProductPage.css';
 import { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import validateCreate from '../../data/validatecreate';
 
 function AddProductPage() {
   const[title, setTitle] = useState('')
@@ -13,6 +14,13 @@ function AddProductPage() {
   const[files, setFiles] = useState('')
   const url = process.env.REACT_APP_API_URL;
   let imageNames = [];
+  const [errors, setErrors] = useState({
+    title: '',
+    price: '',
+    category: '',
+    size: '',
+    description: '',
+  });
 
   const titleChangeHandler = event => {
     setTitle(event.target.value)
@@ -29,6 +37,7 @@ function AddProductPage() {
   const categoryChangeHandler = event =>{
     setCategory(event.target.value)
   }
+
 
   const fileChangeHandler = event => {
     if (Array.from(event.target.files).length > 5) {
@@ -50,18 +59,23 @@ function AddProductPage() {
     const item={title, price, category, size, description, imageNames};
     //window.location.href = "/";
 
-    axios.post(url + "/item/upload", data, {
-      headers:{"Authorization" : `Bearer ${token}`}})
-      .then(
-        console.log("image uploaded" ),
-        data.delete("image"))
+    const {valid, error} = validateCreate(title, price, category, size, description)
+    setErrors(error);
 
-    axios.post(url + "/item/create", item, {
-      headers:{"Authorization" : `Bearer ${token}`}})
-    .then(
-      console.log("Item created"),
-      console.log(item)
-      );
+    if(valid){
+      axios.post(url + "/item/upload", data, {
+        headers:{"Authorization" : `Bearer ${token}`}})
+        .then(
+          console.log("image uploaded" ),
+          data.delete("image"))
+  
+      axios.post(url + "/item/create", item, {
+        headers:{"Authorization" : `Bearer ${token}`}})
+      .then(
+        console.log("Item created"),
+        console.log(item)
+        );
+    }
   }
     return (
       <div className="wrapperp">
@@ -76,6 +90,7 @@ function AddProductPage() {
                 value={title}
                 onChange={titleChangeHandler}>
               </input>
+              {errors.title && <p className='errors'>{errors.title}</p>}
         </div>  
         <div className="inputfield">
           <label for="text"> Cena</label>
@@ -86,6 +101,7 @@ function AddProductPage() {
               value={price} 
               onChange={priceChangeHandler}>
             </input>
+            {errors.price && <p className='errors'>{errors.price}</p>}
       </div>
       <div className='category'>
         <div className="inputfield_select">
@@ -104,6 +120,7 @@ function AddProductPage() {
                   value={"Accessories"}>Doplnky</option>
               </select>
             </div>
+            {errors.category && <p className='errors'>{errors.category}</p>}
         </div> 
 
         <div className="inputfield_select">
@@ -144,6 +161,7 @@ function AddProductPage() {
                 </optgroup>
               </select>
            </div>
+           {errors.size && <p className='errors'>{errors.size}</p>}
         </div>
       </div> 
         <div className="inputfield">
@@ -154,6 +172,7 @@ function AddProductPage() {
             value={description}
             onChange={descriptionChangeHandler}>
           </textarea>
+          {errors.description && <p className='errors'>{errors.description}</p>}
         </div>
         <div className="multipart">
           <input id="fileInput" type="file" multiple onChange={fileChangeHandler}/>
