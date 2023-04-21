@@ -19,6 +19,7 @@ const Navbar = ({toogle}) => {
 
   function handleLogOut(){
     localStorage.clear();
+    window.location.reload(false)
   }
 
   return (
@@ -49,7 +50,6 @@ const Navbar = ({toogle}) => {
                 <a className="dropbtn" >{currentUser}</a>
                 <div className='dropdown-content' onClick={toggleMenu}>
                   <Link to={`/HypeStoreFrontend/profile/${currentUser}`}>Profile</Link>
-                  <Link to={`/HypeStoreFrontend/Options/${currentUser}`}>Options</Link>
                   <Link to='/HypeStoreFrontend/' onClick={handleLogOut}>Log Out</Link>
                 </div>
               </div>

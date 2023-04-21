@@ -14,6 +14,7 @@ const Home = () => {
   const token = localStorage.getItem("token");
   const [item, setItem] = useState([]);
   const [id, setId] = useState('');
+  const [fewItems, setFewItems] = useState([]);
 
   const handleMouseOver = (i) => {
     var element = document.getElementById(i);
@@ -53,6 +54,10 @@ const Home = () => {
       })
   }
 
+  const slicedItem = item.slice(0,5);
+
+
+
   return (
     <><Hero slides={SliderData} />
     <h2 className='titlecategory'>NAJNOVŠIE PRODUKTY</h2>
@@ -60,7 +65,7 @@ const Home = () => {
       <div className='home_list-wrap'>
         
         <div className='list-wrap'>
-          {item? (item.map((data) =>{
+          {slicedItem? (slicedItem.map((data) =>{
             return (
               <div className='listItem-wrap' key={data.id}
                 onMouseOver={()=>handleMouseOver(data.id)}

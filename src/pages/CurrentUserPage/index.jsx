@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
 import './CurrentUserPage.css';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import ProfileImage from "../../components/ProfilImage";
 import {FaFacebookSquare, FaInstagram} from 'react-icons/fa';
 import { FaStar, FaTrash, FaEdit, FaBookmark } from 'react-icons/fa';
@@ -20,6 +20,7 @@ const CurrentUserPage = () =>{
     const url = process.env.REACT_APP_API_URL;
     const userName = localStorage.getItem("userName");
     const token = localStorage.getItem("token");
+    const history = useHistory();
 
     const handleMouseOver = (i) => {
         var element = document.getElementById(i);
@@ -71,7 +72,6 @@ const CurrentUserPage = () =>{
         setItems(currentUser.items)
         setIsVisible(false);
         setIsFavorite(false);
-        setIsReserved(false);
     }
 
     function handleFavorite (e){
@@ -80,16 +80,8 @@ const CurrentUserPage = () =>{
         setIsFavorite(true);
     }
 
-    function handleReserved (e){
-        setItems(currentUser.reservedItems)
-        setIsVisible(false)
-        setIsReserved(true);
-        setIsFavorite(false);
-    }
-
     function handleComments (){
         setIsVisible(true)
-        setIsReserved(false);
     }
 
     function handleFacebook(){
@@ -98,6 +90,10 @@ const CurrentUserPage = () =>{
 
     function handleInstagram(){
         window.open(currentUser.instagram, "_blank");
+    }
+
+    function handleEdit(id){
+        history.push("/HypeStoreFrontend/edit/" + id)
     }
 
     console.log(currentUser);
@@ -137,7 +133,6 @@ const CurrentUserPage = () =>{
             <div className="Submenu-Links">
                 <a className='product' onClick={handleProducts}>Product</a>
                 <a className='favorite' onClick={handleFavorite}>Favorite</a>
-                <a className='reserved' onClick={handleReserved}>Reserved</a>
                 <a className='comments' onClick={handleComments}>Comments</a>
             </div>
             </div>
@@ -150,10 +145,9 @@ const CurrentUserPage = () =>{
                         onMouseLeave={()=>handleMouseLeave(data.id)}>
 
                         {(<div className='top-row' id={`${data.id}`}>
-                            <FaTrash onClick={()=>handleDelete(data.id)} style = {{display: isFavorite ? 'none' : 'block', display: isReserved ? 'none' : 'block' }} className='trash'></FaTrash>
-                            <FaEdit style = {{display: isFavorite ? 'none' : 'block', display: isReserved ? 'none' : 'block' }} className='edit'></FaEdit>
+                            <FaTrash onClick={()=>handleDelete(data.id)} style = {{display: isFavorite ? 'none' : 'block'}} className="trash"></FaTrash>
+                            <FaEdit onClick={() =>handleEdit(data.id)} style = {{display: isFavorite ? 'none' : 'block'}} className='edit'></FaEdit>
                             <FaStar onClick={() => handleDelFavorite(data.id)} style = {{display: isFavorite ? 'block' : 'none' , color: isFavorite ? 'yellow' : 'white'}} className='star'></FaStar>
-                            <FaBookmark onClick={()=>handleDelReserved(data.id)} style = {{display: isReserved ? 'block' : 'none' , display: isFavorite ? 'none' : 'block'}} className='edit'></FaBookmark>
                         </div> )}
 
                         <Link to={`/HypeStoreFrontend/${data.id}`}>
@@ -185,7 +179,7 @@ const CurrentUserPage = () =>{
                         <div className='comment-post'>{data.comment}</div>
                     </div>
                 </div>
-            )})): (<h3>No data yet</h3>)}
+            )})): (<h1>No data yet</h1>)}
                 
             </div>
 

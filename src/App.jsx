@@ -14,6 +14,7 @@ import CurrentUserPage from './pages/CurrentUserPage';
 import Footer from './components/Footer/Footer'
 import Navbar from './components/Navbar';
 import Editprofile from './pages/Editprofile/Editprofile';
+import EditProduct from './pages/EditProduct/EditProduct';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route exact path="/HypeStoreFrontend/user/:userName"><UserPage/></Route>
           <Route exact path="/HypeStoreFrontend/profile/:userName"><CurrentUserPage/></Route>
           <Route exact path="/HypeStoreFrontend/editProfile/:id"><Editprofile/></Route>
+          <Route exact path="/HypeStoreFrontend/edit/:id"><EditProduct/></Route>
         </Switch>
       <Footer/>
     </Router> 

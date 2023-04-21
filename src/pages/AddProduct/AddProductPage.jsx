@@ -57,7 +57,6 @@ function AddProductPage() {
 
 
     const item={title, price, category, size, description, imageNames};
-    //window.location.href = "/";
 
     const {valid, error} = validateCreate(title, price, category, size, description)
     setErrors(error);
@@ -73,7 +72,8 @@ function AddProductPage() {
         headers:{"Authorization" : `Bearer ${token}`}})
       .then(
         console.log("Item created"),
-        console.log(item)
+        console.log(item),
+        window.location.href = "/HypeStoreFrontend/"
         );
     }
   }

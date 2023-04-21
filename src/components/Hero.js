@@ -7,14 +7,14 @@ import {IoArrowForward, IoArrowBack} from  'react-icons/io5';
 
 const HeroSection = styled.section`
 height: 100vh;
-max-height: 700px;
+max-height: 600px;
 position: relative;
 overflow: hidden;
 `;
 
 const HeroWrapper = styled.div`
 width: 100%;
-height: 100%;
+height: 600px;
 display: flex;
 justify-content: center;
 align-items: center;
@@ -25,7 +25,7 @@ position: relative;
 const HeroSlide = styled.div`
 z-index: 1;
 width: 100%;
-height: 100%;
+height: 600px;
 
 `;
 const HeroSlider = styled.div`
@@ -33,7 +33,7 @@ position: absolute;
 top: 0;
 left: 0;
 width: 100%;
-height: 100%;
+height: 600px;
 display: flex;
 align-items: center;
 justify-content: center;
@@ -60,17 +60,17 @@ position: absolute;
 top: 0;
 left: 0;
 width: 100%;
-height: 100%;
-object-fit: fill;
+height: 600px;
+object-fit: cover;
 `;
 
 
 const HeroContent = styled.div`
 position: relative;
-z-index: 10;
+z-index: 1;
 display: flex;
 flex-direction: column;
-max-width: 1600px;
+max-width: 100%;
 width: calc(100% - 100px);
 color: #fff;
 
@@ -98,8 +98,9 @@ const SliderButtons = styled.div`
 position: absolute;
 //bottom: 50px;
 right: 50px;
+margin-top:40px;
 display: flex;
-z-index: 10;
+z-index: 1;
 `
 
 const arrowButtons = css`

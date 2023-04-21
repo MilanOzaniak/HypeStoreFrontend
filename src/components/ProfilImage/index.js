@@ -16,6 +16,7 @@ function ProfileImage(){
         setCurrentUser(response.data);
         setProfilePic(response.data.profileImage);
     })
+    
 }, [])
 
 

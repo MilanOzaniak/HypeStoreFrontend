@@ -1,6 +1,6 @@
-import ImageOne from '../images/slider/streetwear.jpg';
-import ImageTwo from '../images/slider/streetwear2.jpg';
-import ImageThree from '../images/slider/streetwear3.jpg';
+import ImageOne from '../images/slider/doplnky.jpg';
+import ImageTwo from '../images/slider/oblecenie.jpg';
+import ImageThree from '../images/slider/topanky.jpg';
 
 export const SliderData = [
     {
