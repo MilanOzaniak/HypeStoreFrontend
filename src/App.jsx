@@ -25,8 +25,8 @@ function App() {
           <Route exact path='/HypeStoreFrontend/shoes'> <ShoesPage/> </Route>
           <Route exact path='/HypeStoreFrontend/clothing'> <ClothingPage/> </Route>
           <Route exact path='/HypeStoreFrontend/accessories'> <AccessoriesPage/> </Route>
-          <Route path='/HypeStoreFrontend/login'> <SignUp/> </Route>
-          <Route path='/HypeStoreFrontend/register'> <Formm/> </Route>
+          <Route exact path='/HypeStoreFrontend/login'> <SignUp/> </Route>
+          <Route exact path='/HypeStoreFrontend/register'> <Formm/> </Route>
           <Route exact path='/HypeStoreFrontend/createitempage'><AddProductPage/> </Route>
           <Route exact path="/HypeStoreFrontend/shoes/:id"><CurrentItem/></Route>
           <Route exact path="/HypeStoreFrontend/clothing/:id"><CurrentItem/></Route>
