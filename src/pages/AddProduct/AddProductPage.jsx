@@ -2,7 +2,7 @@ import React from 'react';
 import './AddProductPage.css';
 import { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link , useHistory} from 'react-router-dom';
 import validateCreate from '../../data/validatecreate';
 
 function AddProductPage() {
@@ -14,6 +14,7 @@ function AddProductPage() {
   const[files, setFiles] = useState('')
   const url = process.env.REACT_APP_API_URL;
   let imageNames = [];
+  const history = useHistory();
   const [errors, setErrors] = useState({
     title: '',
     price: '',
@@ -64,17 +65,16 @@ function AddProductPage() {
     if(valid){
       axios.post(url + "/item/upload", data, {
         headers:{"Authorization" : `Bearer ${token}`}})
-        .then(
-          console.log("image uploaded" ),
-          data.delete("image"))
+        .then((response)=>{
+          if(response.status === 200){
+            history.push('/HypeStoreFrontend/')
+          }
+        })
+
+
   
       axios.post(url + "/item/create", item, {
         headers:{"Authorization" : `Bearer ${token}`}})
-      .then(
-        console.log("Item created"),
-        console.log(item),
-        window.location.href = "/HypeStoreFrontend/"
-        );
     }
   }
     return (

@@ -1,10 +1,11 @@
 import React from 'react';
 import './styles.css';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import { FaBars, FaTimes } from "react-icons/fa";
 
 const Navbar = ({toogle}) => {
+  const history = useHistory();
   const currentUser = localStorage.getItem("userName");
   const [isVisible] = useState(currentUser === null);
 
@@ -19,7 +20,8 @@ const Navbar = ({toogle}) => {
 
   function handleLogOut(){
     localStorage.clear();
-    window.location.reload(false)
+    window.location.reload()
+    history.push('/HypeStoreFrontend/')
   }
 
   return (
@@ -50,7 +52,7 @@ const Navbar = ({toogle}) => {
                 <a className="dropbtn" >{currentUser}</a>
                 <div className='dropdown-content' onClick={toggleMenu}>
                   <Link to={`/HypeStoreFrontend/profile/${currentUser}`}>Profile</Link>
-                  <Link to='/HypeStoreFrontend/' onClick={handleLogOut}>Log Out</Link>
+                  <Link to={'/HypeStoreFrontend/'} onClick={handleLogOut}>Log Out</Link>
                 </div>
               </div>
             </div>
