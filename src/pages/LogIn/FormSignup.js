@@ -77,6 +77,10 @@ const FormSignup = () => {
     }
   }
 
+  function push(){
+    history.push('/HypeStoreFrontend/register');
+  }
+
 
 
   return (
@@ -117,7 +121,7 @@ const FormSignup = () => {
         </div>
         <span className='form-input-login'>
             You don´t have an account ? Register  
-              <a href='/HypeStoreFrontend/register'> here.</a>
+              <a onClick={push}> here.</a>
         </span>
       </div>
     </div>
