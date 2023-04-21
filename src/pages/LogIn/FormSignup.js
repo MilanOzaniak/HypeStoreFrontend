@@ -121,7 +121,7 @@ const FormSignup = () => {
         </div>
         <span className='form-input-login'>
             You don´t have an account ? Register  
-              <Link to='/HypeStoreFrontend/register'> here.</Link>
+              <Link to={'/HypeStoreFrontend/register'}> here.</Link>
         </span>
       </div>
     </div>
