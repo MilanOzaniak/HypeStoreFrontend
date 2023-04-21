@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/HypeStoreFrontend/static/css/main.b908af98.css",
-    "main.js": "/HypeStoreFrontend/static/js/main.7d211e32.js",
+    "main.js": "/HypeStoreFrontend/static/js/main.e53237aa.js",
     "static/js/787.d7232bc1.chunk.js": "/HypeStoreFrontend/static/js/787.d7232bc1.chunk.js",
     "static/media/oblecenie.jpg": "/HypeStoreFrontend/static/media/oblecenie.f4bbbb4ae43b6d08a2c9.jpg",
     "static/media/faq.jpg": "/HypeStoreFrontend/static/media/faq.2eda4c22357c68f20d3b.jpg",
@@ -10,11 +10,11 @@
     "static/media/pic.png": "/HypeStoreFrontend/static/media/pic.576e7907f511285efe5b.png",
     "index.html": "/HypeStoreFrontend/index.html",
     "main.b908af98.css.map": "/HypeStoreFrontend/static/css/main.b908af98.css.map",
-    "main.7d211e32.js.map": "/HypeStoreFrontend/static/js/main.7d211e32.js.map",
+    "main.e53237aa.js.map": "/HypeStoreFrontend/static/js/main.e53237aa.js.map",
     "787.d7232bc1.chunk.js.map": "/HypeStoreFrontend/static/js/787.d7232bc1.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b908af98.css",
-    "static/js/main.7d211e32.js"
+    "static/js/main.e53237aa.js"
   ]
 }
