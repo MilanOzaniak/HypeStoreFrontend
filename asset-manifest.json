@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/HypeStoreFrontend/static/css/main.8bde0549.css",
-    "main.js": "/HypeStoreFrontend/static/js/main.8b1570ef.js",
+    "main.js": "/HypeStoreFrontend/static/js/main.9fdcdfda.js",
     "static/js/787.d7232bc1.chunk.js": "/HypeStoreFrontend/static/js/787.d7232bc1.chunk.js",
-    "static/media/streetwear2.jpg": "/HypeStoreFrontend/static/media/streetwear2.613ee6f18f67a4515ced.jpg",
-    "static/media/streetwear.jpg": "/HypeStoreFrontend/static/media/streetwear.e60013eacdacbf448f92.jpg",
-    "static/media/streetwear3.jpg": "/HypeStoreFrontend/static/media/streetwear3.18454b4f0225699a75e0.jpg",
+    "static/media/oblecenie.jpg": "/HypeStoreFrontend/static/media/oblecenie.f4bbbb4ae43b6d08a2c9.jpg",
     "static/media/faq.jpg": "/HypeStoreFrontend/static/media/faq.2eda4c22357c68f20d3b.jpg",
+    "static/media/doplnky.jpg": "/HypeStoreFrontend/static/media/doplnky.ca7bd3df4871e8cb0721.jpg",
+    "static/media/topanky.jpg": "/HypeStoreFrontend/static/media/topanky.dd3f80b852f5b5563aa4.jpg",
     "static/media/pic.png": "/HypeStoreFrontend/static/media/pic.576e7907f511285efe5b.png",
     "index.html": "/HypeStoreFrontend/index.html",
     "main.8bde0549.css.map": "/HypeStoreFrontend/static/css/main.8bde0549.css.map",
-    "main.8b1570ef.js.map": "/HypeStoreFrontend/static/js/main.8b1570ef.js.map",
+    "main.9fdcdfda.js.map": "/HypeStoreFrontend/static/js/main.9fdcdfda.js.map",
     "787.d7232bc1.chunk.js.map": "/HypeStoreFrontend/static/js/787.d7232bc1.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.8bde0549.css",
-    "static/js/main.8b1570ef.js"
+    "static/js/main.9fdcdfda.js"
   ]
 }
