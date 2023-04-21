@@ -28,6 +28,7 @@ const Home = () => {
 
 
   useEffect(() => {
+    console.log(url)  
     axios.get(url + "/item/getAll").then((response) => {
       setItem(response.data);
       console.log(response.data);

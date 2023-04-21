@@ -7,7 +7,7 @@ import SignUp from './pages/signup';
 import AddProductPage from './pages/AddProduct/AddProductPage';
 import UserPage from './pages/UserPage';
 import ShoesPage from './pages/AllShoes';
-import Formm from './components/Form1';
+import Register from './pages/Register/FormRegister';
 import AccessoriesPage from './pages/AllAccessories';
 import ClothingPage from './pages/AllClothing';
 import CurrentUserPage from './pages/CurrentUserPage';
@@ -25,8 +25,8 @@ function App() {
           <Route exact path='/HypeStoreFrontend/shoes'> <ShoesPage/> </Route>
           <Route exact path='/HypeStoreFrontend/clothing'> <ClothingPage/> </Route>
           <Route exact path='/HypeStoreFrontend/accessories'> <AccessoriesPage/> </Route>
-          <Route exact path='/HypeStoreFrontend/login'> <SignUp/> </Route>
-          <Route exact path='/HypeStoreFrontend/register'> <Formm/> </Route>
+          <Route path='/HypeStoreFrontend/login'> <SignUp/> </Route>
+          <Route path='/HypeStoreFrontend/register'> <Register/> </Route>
           <Route exact path='/HypeStoreFrontend/createitempage'><AddProductPage/> </Route>
           <Route exact path="/HypeStoreFrontend/shoes/:id"><CurrentItem/></Route>
           <Route exact path="/HypeStoreFrontend/clothing/:id"><CurrentItem/></Route>

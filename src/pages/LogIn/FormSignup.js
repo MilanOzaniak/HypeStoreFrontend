@@ -15,6 +15,7 @@ const FormSignup = () => {
   const [captchaVerified, setCaptchaVerified] = useState(true);
   const captchaRef = useRef(null)
 
+  console.log(url);
   const nameChangeHandler = event => {
       setUserName(event.target.value)
   }
