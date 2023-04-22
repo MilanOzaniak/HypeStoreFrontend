@@ -12,7 +12,7 @@ const FormSignup = () => {
   const[password, setPassword] = useState('')
   const url = process.env.REACT_APP_API_URL;
   const [errorMessage, setErrorMessage] = useState('');
-  const [captchaVerified, setCaptchaVerified] = useState(false);
+  const [captchaVerified, setCaptchaVerified] = useState(true);
   const captchaRef = useRef(null)
 
   console.log(url);

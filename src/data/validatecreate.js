@@ -37,12 +37,12 @@ export default function validateCreate(title, price, category, size, description
       }
 
       if(!location){
-        error.location = 'Please enter location';
+        error.location = 'Please enter a location!';
         valid = false;
       }
 
       if(!gender){
-        error.location = 'Please enter gender';
+        error.gender = 'Please enter a gender!';
         valid = false;
       }
 

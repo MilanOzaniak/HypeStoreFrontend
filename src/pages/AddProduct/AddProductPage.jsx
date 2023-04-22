@@ -79,7 +79,7 @@ function AddProductPage() {
         headers:{"Authorization" : `Bearer ${token}`}})
         .then((response)=>{
           if(response.status === 200){
-            history.push('/HypeStoreFrontend/')
+            //history.push('/HypeStoreFrontend/')
           }
         })
 
@@ -184,14 +184,14 @@ function AddProductPage() {
             <select value={location}
             onChange={locationChangeHandler}>
             <option value="">Vyber mesto</option>
-              <option value="ZA">Žilinský kraj</option>
-              <option value="BA">Bratislavský kraj</option>
-              <option value="BB">Banskobystrický kraj</option>
-              <option value="KE">Košičský kraj</option>
-              <option value="TN">Trenčiansky kraj</option>
-              <option value="NR">Nitriansky kraj</option>
-              <option value="PR">Prešovkský kraj</option>
-              <option value="TR">Trnavský kraj</option>
+              <option value="Žilinský kraj">Žilinský kraj</option>
+              <option value="Bratislavský kraj">Bratislavský kraj</option>
+              <option value="Banskobystrický kraj">Banskobystrický kraj</option>
+              <option value="Košičský kraj">Košičský kraj</option>
+              <option value="Trenčiansky kraj">Trenčiansky kraj</option>
+              <option value="Nitriansky kraj">Nitriansky kraj</option>
+              <option value="Prešovkský kraj">Prešovkský kraj</option>
+              <option value="Trnavský kraj">Trnavský kraj</option>
               </select>
             </div>
             {errors.location && <p className='errors'>{errors.location}</p>}
