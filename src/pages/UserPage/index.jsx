@@ -55,7 +55,7 @@ const UserPage = () =>{
         data.append("id", currentUser.id)
         data.append("comment", comment)
         axios.post(url + "/comment/writeComment", data, {headers:{"Authorization" : `Bearer ${token}`}}).then((response)=>{
-            window.location.reload(false);
+            window.location.reload();
             setIsVisible(true);
         })
         console.log(userName)

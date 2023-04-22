@@ -1,10 +1,12 @@
-export default function validateCreate(title, price, category, size, description) {
+export default function validateCreate(title, price, category, size, description, location, gender) {
     const error = {
       title: '',
       price: '',
       category: '',
       size: '',
       description: '',
+      location: '',
+      gender: ''
     };
 
     let valid = true
@@ -31,6 +33,16 @@ export default function validateCreate(title, price, category, size, description
   
       if (!description) {
         error.description =  'Please enter a description!';
+        valid = false;
+      }
+
+      if(!location){
+        error.location = 'Please enter location';
+        valid = false;
+      }
+
+      if(!gender){
+        error.location = 'Please enter gender';
         valid = false;
       }
 

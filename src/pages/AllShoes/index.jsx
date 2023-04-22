@@ -40,15 +40,15 @@ const ShoesPage = () => {
 
 
 	const handleChnangeLowest = () =>{
-		setCheckedLowest(!checkedLowest);
-		if(!checkedLowest){
-			axios.get(url + "/item/getByPriceAsc").then((response) => {
-      setItem(response.data);
-      console.log(response.data);
+	setCheckedLowest(!checkedLowest);
+	if(!checkedLowest){
+		axios.get(url + "/item/getShoesByPriceAsc").then((response) => {
+      	setItem(response.data);
+      	console.log(response.data);
     });
 		}
     else{
-      axios.get(url + "/item/getAllShoes").then((response) => {
+      	axios.get(url + "/item/getAllShoes").then((response) => {
         setItem(response.data);
         console.log(response.data);
       });
@@ -56,11 +56,11 @@ const ShoesPage = () => {
 	}
 
   const handleChnangeHighest = () =>{
-		setCheckedHighest(!checkedHighest);
-		if(!checkedHighest){
-			axios.get(url + "/item/getByPriceDesc").then((response) => {
-      setItem(response.data);
-      console.log(response.data);
+	setCheckedHighest(!checkedHighest);
+	if(!checkedHighest){
+		axios.get(url + "/item/getShoesByPriceDesc").then((response) => {
+      	setItem(response.data);
+      	console.log(response.data);
     });
 		}
     else{
@@ -76,7 +76,7 @@ const ShoesPage = () => {
     setSize(value);
 
     if (value != null){
-      axios.get(url + "/item/getBySize/" + value).then((response) => {
+      axios.get(url + "/item/getShoesBySize/" + size).then((response) => {
         setItem(response.data);
         console.log(response.data);
       });
@@ -99,15 +99,6 @@ const ShoesPage = () => {
       })
   }
 
-  function resItemHandler (id){
-    let data = new FormData();
-    data.append("id", id);
-
-    axios.post(url + "/user/reserveItem", data, {
-      headers:{"Authorization" : `Bearer ${token}`}}).then(()=>{
-        console.log("sadas")
-      })
-  }
    
   return (
     <div className='home'>
@@ -123,33 +114,33 @@ const ShoesPage = () => {
             <div class="filter-block">					
 				<div class="content-filter">
 					<div class="select filters">
-						<select class="filter" name="selectThis" id="selectThis">
+						<select class="filter" name="selectThis" id="selectThis" onChange={handleChangeSize}>
 							<optgroup label="Veľkosť topanok">
-								<option value="">Vyber veľkosť</option>
-								<option value=".option1">34</option>
-								<option value=".option2">35</option>
-								<option value=".option3">36</option>
-								<option value=".option5">37</option>
-                            	<option value=".option6">38</option>
-								<option value=".option7">39</option>
-								<option value=".option8">40</option>
-								<option value=".option9">41</option>
-								<option value=".option10">42</option>
-								<option value=".option11">43</option>
-								<option value=".option12">44</option>
-								<option value=".option13">45</option>
-								<option value=".option14">46</option>
-								<option value=".option15">47</option>
-								<option value=".option17">48</option>
-								<option value=".option17">49</option>
+								<option value="0">Vyber veľkosť</option>
+								<option value="34">34</option>
+								<option value="35">35</option>
+								<option value="36">36</option>
+								<option value="37">37</option>
+                            	<option value="38">38</option>
+								<option value="39">39</option>
+								<option value="40">40</option>
+								<option value="41">41</option>
+								<option value="42">42</option>
+								<option value="43">43</option>
+								<option value="44">44</option>
+								<option value="45">45</option>
+								<option value="46">46</option>
+								<option value="47">47</option>
+								<option value="48">48</option>
+								<option value="49">49</option>
 							</optgroup>
 							<optgroup label="Veľkost veci">
-								<option value=".option18">XS</option>
-								<option value=".option18">S</option>
-								<option value=".option18">M</option>
-								<option value=".option18">L</option>
-								<option value=".option18">XL</option>
-								<option value=".option18">XXL</option>
+								<option value="XS">XS</option>
+								<option value="S">S</option>
+								<option value="M">M</option>
+								<option value="L">L</option>
+								<option value="XL">XL</option>
+								<option value="XXL">XXL</option>
 							</optgroup>
 						</select>
 					</div> 
@@ -161,30 +152,14 @@ const ShoesPage = () => {
 						<select class="filter" name="selectThis" id="selectThis">
 							<optgroup label="Slovenské kraje">
 								<option value="">Vyber mesto</option>
-								<option value=".option1">Žilinský kraj</option>
-								<option value=".option2">Bratislavský kraj</option>
-								<option value=".option3">Banskobystrický kraj</option>
-								<option value=".option5">Košičský kraj</option>
-								<option value=".option6">Trenčiansky kraj</option>
-								<option value=".option7">Nitriansky kraj</option>
-								<option value=".option8">Prešovkský kraj</option>
-								<option value=".option9">Trnavský kraj</option>
-							</optgroup>
-							<optgroup label="České kraje">
-								<option value=".option10">Hlavné mesto Praha</option>
-								<option value=".option11">Stredočeský kraj</option>
-								<option value=".option12">Plzenský kraj</option>
-								<option value=".option13">Karlovarský kraj</option>
-								<option value=".option14">Královohradecký kraj</option>
-								<option value=".option15">Liberecký kraj</option>
-								<option value=".option16">Juhočeský kraj</option>
-								<option value=".option17">Pardubický kraj</option>
-								<option value=".option18">Kraj Vysočina</option>
-								<option value=".option19">Juhomoravský kraj</option>
-								<option value=".option20">Zlínsky kraj</option>
-								<option value=".option21">Olomoucký kraj</option>
-								<option value=".option22">Moravsko-sliezsky kraj</option>
-
+								<option value="ZA">Žilinský kraj</option>
+								<option value="BA">Bratislavský kraj</option>
+								<option value="BB">Banskobystrický kraj</option>
+								<option value="KE">Košičský kraj</option>
+								<option value="TN">Trenčiansky kraj</option>
+								<option value="NR">Nitriansky kraj</option>
+								<option value="PR">Prešovkský kraj</option>
+								<option value="TR">Trnavský kraj</option>
 							</optgroup>
 						</select>
 					</div> 
@@ -194,18 +169,18 @@ const ShoesPage = () => {
 					<h4 className='nazov1'>Zoraď podľa</h4>
 					<ul class="content-filter1 filters list">
 						<li>
-							<input class="filter" data-filter=".check1" type="checkbox" id="checkbox1"></input>
+							<input onClick={handleChnangeLowest} class="filter" data-filter=".check1" type="checkbox" id="checkbox1"></input>
 							<label class="checkbox-label" for="checkbox1">Najnižšia cena</label>
 						</li>
-              <li>
-							<input class="filter" data-filter=".check2" type="checkbox" id="checkbox2"></input>
+              			<li>
+							<input onClick={handleChnangeHighest} class="filter" data-filter=".check2" type="checkbox" id="checkbox2"></input>
 							<label class="checkbox-label" for="checkbox2">Najvyššia cena</label>
 						</li>
 						<li>
 							<input class="filter" data-filter=".check3" type="checkbox" id="checkbox3"></input>
 							<label class="checkbox-label" for="checkbox3">Najnovšie produkty</label>
 						</li>
-              <li>
+              			<li>
 							<input class="filter" data-filter=".check4" type="checkbox" id="checkbox4"></input>
 							<label class="checkbox-label" for="checkbox4">Najstaršie produkty</label>
 						</li>
@@ -226,7 +201,6 @@ const ShoesPage = () => {
 
 				{(<div className= 'top-row' id={`${data.id}`}>
 					<FaStar onClick={()=>favItemHandler(data.id)} className='star'></FaStar>
-                  <FaBookmark onClick={()=>resItemHandler(data.id)} className='edit'></FaBookmark>
                 </div>)}
 
             <Link to={`/HypeStoreFrontend/shoes/${data.id}`}>

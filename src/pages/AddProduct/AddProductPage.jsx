@@ -11,6 +11,8 @@ function AddProductPage() {
   const[size, setSize] = useState('')
   const[price, setPrice] = useState('')
   const[category, setCategory] = useState('')
+  const[location, setLocation] = useState('')
+  const[gender, setGender] = useState('')
   const[files, setFiles] = useState('')
   const url = process.env.REACT_APP_API_URL;
   let imageNames = [];
@@ -21,6 +23,8 @@ function AddProductPage() {
     category: '',
     size: '',
     description: '',
+    location: '',
+    gender: '',
   });
 
   const [redirect, setRedirect] = useState('');
@@ -40,7 +44,12 @@ function AddProductPage() {
   const categoryChangeHandler = event =>{
     setCategory(event.target.value)
   }
-
+  const locationChangeHandler = event =>{
+    setLocation(event.target.value)
+  }
+  const genderChangeHandler = event =>{
+    setGender(event.target.value)
+  }
 
   const fileChangeHandler = event => {
     if (Array.from(event.target.files).length > 5) {
@@ -59,9 +68,9 @@ function AddProductPage() {
     }
 
 
-    const item={title, price, category, size, description, imageNames};
+    const item={title, price, category, size, description, location, gender, imageNames};
 
-    const {valid, error} = validateCreate(title, price, category, size, description)
+    const {valid, error} = validateCreate(title, price, category, size, description, location, gender)
     setErrors(error);
 
     if(valid){
@@ -165,6 +174,41 @@ function AddProductPage() {
               </select>
            </div>
            {errors.size && <p className='errors'>{errors.size}</p>}
+        </div>
+      </div>
+      <div className='category'>
+         <div className="inputfield_select">
+          <label for="text">Lokácia</label>
+          <p className='select_info'></p>
+            <div className="custom_select">
+            <select value={location}
+            onChange={locationChangeHandler}>
+            <option value="">Vyber mesto</option>
+              <option value="ZA">Žilinský kraj</option>
+              <option value="BA">Bratislavský kraj</option>
+              <option value="BB">Banskobystrický kraj</option>
+              <option value="KE">Košičský kraj</option>
+              <option value="TN">Trenčiansky kraj</option>
+              <option value="NR">Nitriansky kraj</option>
+              <option value="PR">Prešovkský kraj</option>
+              <option value="TR">Trnavský kraj</option>
+              </select>
+            </div>
+            {errors.location && <p className='errors'>{errors.location}</p>}
+        </div>
+        <div className="inputfield_select">
+          <label for="text">Pohlavie</label>
+          <p className='select_info'></p>
+            <div className="custom_select">
+            <select value={gender}
+            onChange={genderChangeHandler}>
+              <option value="">Vyber pohlavie</option>
+              <option value="MEN">Mužské</option>
+              <option value="WOMEN">Ženské</option>
+              <option value="NON">Unisex</option>
+            </select>
+            </div>
+            {errors.gender && <p className='errors'>{errors.gender}</p>}
         </div>
       </div> 
         <div className="inputfield">

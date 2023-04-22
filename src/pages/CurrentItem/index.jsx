@@ -65,6 +65,9 @@ const CurrentItemPage = () =>{
                         <div className="Product-Info">
                             {currentItem.description} 
                         </div>
+                        <div className='Product-Size'>
+                            Žilinský kraj
+                        </div>
                         <div className="Product-Size">
                             Size: {currentItem.size}
                         </div>
