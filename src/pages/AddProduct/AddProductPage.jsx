@@ -23,6 +23,8 @@ function AddProductPage() {
     description: '',
   });
 
+  const [redirect, setRedirect] = useState('');
+
   const titleChangeHandler = event => {
     setTitle(event.target.value)
   } 
@@ -63,6 +65,7 @@ function AddProductPage() {
     setErrors(error);
 
     if(valid){
+      setRedirect('Redirecting....')
       axios.post(url + "/item/upload", data, {
         headers:{"Authorization" : `Bearer ${token}`}})
         .then((response)=>{
@@ -179,6 +182,7 @@ function AddProductPage() {
         </div>
         <div className="inputfield">
             <input type="submit" value="Create Item" className="btn1" onClick={handleSubmit}></input>
+            {redirect &&<p className='errors'>{redirect}</p>}
         </div>
       </div>
     </div>
