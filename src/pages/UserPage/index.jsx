@@ -112,7 +112,7 @@ const UserPage = () =>{
                             <FaBookmark className='edit'></FaBookmark>
                         </div>)}
 
-                        <Link to={`/HypeStoreFrontend/clothing/${data.id}`}>
+                        <Link to={`/HypeStoreFrontend/product/${data.id}`}>
                             <img className='img-box' src={data.imageNames ? url + "/item/getImage/" + data.imageNames[0] : null} alt=''/>
                         </Link>
                         <header>

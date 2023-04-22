@@ -150,7 +150,7 @@ const CurrentUserPage = () =>{
                             <FaStar onClick={() => handleDelFavorite(data.id)} style = {{display: isFavorite ? 'block' : 'none' , color: isFavorite ? 'yellow' : 'white'}} className='star'></FaStar>
                         </div> )}
 
-                        <Link to={`/HypeStoreFrontend/${data.id}`}>
+                        <Link to={`/HypeStoreFrontend/product/${data.id}`}>
                             <img className='img-box' src={data.imageNames ? url + "/item/getImage/" + data.imageNames[0] : null} alt=''/>
                         </Link>
                         <div className="description">

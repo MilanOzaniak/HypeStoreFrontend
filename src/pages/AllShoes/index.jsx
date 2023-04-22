@@ -233,7 +233,7 @@ const ShoesPage = () => {
 					<FaStar onClick={()=>favItemHandler(data.id)} className='star'></FaStar>
                 </div>)}
 
-            <Link to={`/HypeStoreFrontend/shoes/${data.id}`}>
+            <Link to={`/HypeStoreFrontend/product/${data.id}`}>
             	<img className='img-box' src={data.imageNames ? url + "/item/getImage/" + data.imageNames[0] : null} alt=''/>
             </Link>
               <h4>{data.title}</h4>
