@@ -37,9 +37,8 @@ const FormSignup = () => {
   };
 
   function handleCaptchaChange(){
-    const data = token.current.getValue();
-    console.log(data)
     setCaptchaVerified(true);
+    const data = token.current.getValue();
     console.log(captchaVerified)
     axios.post( url + '/captcha-verify', data)
     .then((response) =>{
