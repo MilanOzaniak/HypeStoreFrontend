@@ -12,7 +12,7 @@ const FormSignup = () => {
   const[password, setPassword] = useState('')
   const url = process.env.REACT_APP_API_URL;
   const [errorMessage, setErrorMessage] = useState('');
-  const [captchaVerified, setCaptchaVerified] = useState(true);
+  const [captchaVerified, setCaptchaVerified] = useState(false);
   const captchaRef = useRef(null)
 
   console.log(url);
@@ -40,12 +40,8 @@ const FormSignup = () => {
   async function handleCaptchaChange () {
 
     const token = captchaRef.current.getValue();
-    axios.post( url + '/captcha-verify', null, {
-      params: {
-        responseToken: token,
-      },
-    }).then((response) =>{
-      setCaptchaVerified(true);
+    axios.post( url + '/captcha-verify', token)
+    .then((response) =>{
       if (response.status === 200) {
         return setCaptchaVerified(true);
       }
