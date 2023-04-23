@@ -28,6 +28,13 @@ const FormSignup = () => {
 
   async function handleLogIn (event){
     event.preventDefault();
+    
+    axios.post( url + '/captcha-verify', { token: captchaToken })
+    .then((response) =>{
+      if (response.status === 200) {
+        return setCaptchaVerified(true);
+      }
+    })
     const error = await validateLogin(username, password);
     setErrorMessage(error);
     
@@ -39,12 +46,7 @@ const FormSignup = () => {
 
   const handleCaptchaChange = (token) => {
     setCaptchaToken(token);
-    axios.post( url + '/captcha-verify', { token: captchaToken })
-    .then((response) =>{
-      if (response.status === 200) {
-        return setCaptchaVerified(true);
-      }
-    })
+    console.log(token);
   };
 
   async function validateLogin(username, password) {
