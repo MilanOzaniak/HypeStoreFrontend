@@ -69,7 +69,7 @@ const FormSignup = () => {
             value={userName}
             onChange={nameChangeHandler}
           />
-          {errors.userName && <p>{errors.userName}</p>}
+          {errors.userName && <p className='errors'>{errors.userName}</p>}
         </div>
         <div className='form-inputs'>
           <label className='form-label'>Email</label>
@@ -83,7 +83,7 @@ const FormSignup = () => {
 
           />
           
-          {errors.email && <p>{errors.email}</p>}
+          {errors.email && <p className='errors'>{errors.email}</p>}
         </div>
 
         <div className='form-inputs'>
@@ -98,7 +98,7 @@ const FormSignup = () => {
 
           />
           
-          {errors.pNumber && <p>{errors.pNumber}</p>}
+          {errors.pNumber && <p className='errors'>{errors.pNumber}</p>}
         </div>
 
         <div className='form-inputs'>
@@ -111,7 +111,7 @@ const FormSignup = () => {
             value={password}
             onChange={passwordChangeHandler}
           />
-          {errors.password && <p>{errors.password}</p>}
+          {errors.password && <p className='errors'>{errors.password}</p>}
         </div>
         <div className='form-inputs'>
           <label className='form-label'>Confirm Password</label>
@@ -123,7 +123,7 @@ const FormSignup = () => {
             value={password2}
             onChange={passwordChangeHandler2}
           />
-          {errors.password2 && <p>{errors.password2}</p>}
+          {errors.password2 && <p className='errors'>{errors.password2}</p>}
         </div>
 
         <div className='form-input-btnregister' type='submit' onClick={handleSubmit}>

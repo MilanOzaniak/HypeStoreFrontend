@@ -69,11 +69,11 @@ const FormSignup = () => {
       if (response.status === 200) {
         return '';
       } else {
-        return 'Invalid username or password';
+        return 'Invalid username or password!';
       }
     } 
     catch (error) {
-      return 'Wrong UserName or Password';
+      return 'Wrong UserName or Password!';
     }
   }
 
@@ -108,7 +108,7 @@ const FormSignup = () => {
             value={password}
             onChange={passwordChangeHandler}
           />
-          {errorMessage && <p>{errorMessage}</p>}
+          {errorMessage && <p className='errors'>{errorMessage}</p>}
         </div>
 
         <ReCAPTCHA className='captcha'

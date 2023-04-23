@@ -73,8 +73,7 @@ const Home = () => {
                 onMouseLeave={()=>handleMouseLeave(data.id)}>
 
                 <div className= 'top-row' id={`${data.id}`}>
-                  <FaStar onClick={()=>favItemHandler(data.id)} className='star'></FaStar>
-                  <FaBookmark onClick={()=>resItemHandler(data.id)} className='edit'></FaBookmark>
+                  <FaStar  onClick={()=>favItemHandler(data.id)} className='star'></FaStar>
                 </div>
 
                 <Link to={`/HypeStoreFrontend/product/${data.id}`}>

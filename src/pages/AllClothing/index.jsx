@@ -11,7 +11,7 @@ const ClothingPage = () => {
   const [item, setItem] = useState([]);
   const url = process.env.REACT_APP_API_URL;
   const token = localStorage.getItem("token");
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   const size = useRef("")
   const locality = useRef("")
   const gender = useRef("")
@@ -56,7 +56,13 @@ const ClothingPage = () => {
 
   const handleChnangeTick = (event) =>{
     const value = event.target.value;
-    if(value === "LP"){
+    if(value === "0"){
+      axios.get(url + "/item/getAllClothing").then((response) => {
+        setItem(response.data);
+        console.log(response.data);
+      });
+    }
+    else if(value === "LP"){
       axios.get(url + "/item/getAccessoriesByPriceAsc").then((response) => {
         setItem(response.data);
         console.log(response.data);
@@ -201,7 +207,7 @@ const ClothingPage = () => {
             <p className='select_info'></p>
               <div className="custom_select">
               <select onChange={handleChnangeTick}>
-              <option value="">Zoraď podľa</option>
+              <option value="0">Zoraď podľa</option>
                 <option value="HP" >Najvyššia cena</option>
                 <option value="LP">Najnižšia cena</option>
                 <option value="NPR">Najnovšie produkty</option>
@@ -214,7 +220,7 @@ const ClothingPage = () => {
             <p className='select_info'></p>
               <div className="custom_select">
               <select onChange={handleChangeGender} ref={gender}>
-              <option value="">Vyber pohlavie</option>
+              <option value="0">Vyber pohlavie</option>
                 <option value="MEN">Mužské</option>
                 <option value="WOMEN">Ženské</option>
                 <option value="NON">Unisex</option>

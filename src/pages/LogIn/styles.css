@@ -90,3 +90,8 @@
     width: 80%;
   }
 }
+p.errorMessage{
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  color: #f00e0e;
+}

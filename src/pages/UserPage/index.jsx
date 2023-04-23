@@ -2,7 +2,6 @@ import React from "react";
 import { useEffect } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
-import image from '../../images/pic.png'
 import { Link, useParams } from "react-router-dom";
 import {FaFacebookSquare, FaInstagram} from 'react-icons/fa';
 import { FaStar, FaTrash, FaEdit, FaBookmark } from 'react-icons/fa';
