@@ -38,6 +38,7 @@ const FormSignup = () => {
 
   function handleCaptchaChange(){
     setCaptchaVerified(true);
+    console.log(setCaptchaVerified)
     //const data = token.current.getValue();
     //console.log(captchaVerified)
     //axios.post( url + '/captcha-verify', data)
