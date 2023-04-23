@@ -41,7 +41,7 @@ const FormSignup = () => {
     console.log(data)
     setCaptchaVerified(true);
     console.log(captchaVerified)
-    axios.post( url + '/captcha-verify', null, {params: {token: data}})
+    axios.post( url + '/captcha-verify', data)
     .then((response) =>{
       if (response.status === 200) {
         return setCaptchaVerified(true);
