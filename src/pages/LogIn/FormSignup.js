@@ -13,7 +13,7 @@ const FormSignup = () => {
   const url = process.env.REACT_APP_API_URL;
   const [errorMessage, setErrorMessage] = useState('');
   const [captchaVerified, setCaptchaVerified] = useState(false);
-  const captchaRef = useRef(null)
+  const [captchaToken, setCaptchaToken] = useState('');
 
   console.log(url);
   const nameChangeHandler = event => {
@@ -37,10 +37,9 @@ const FormSignup = () => {
     }
   };
 
-  async function handleCaptchaChange () {
-
-    const token = captchaRef.current.getValue();
-    axios.post( url + '/captcha-verify', token)
+  const handleCaptchaChange = (token) => {
+    setCaptchaToken(token);
+    axios.post( url + '/captcha-verify', { token: captchaToken })
     .then((response) =>{
       if (response.status === 200) {
         return setCaptchaVerified(true);
@@ -111,8 +110,7 @@ const FormSignup = () => {
 
       <ReCAPTCHA className='captcha'
         sitekey='6LfLOXElAAAAALmed6NMaHwS3bNzsFX9R73F9M6r'
-        onChange={handleCaptchaChange}
-        ref={captchaRef}/>
+        onChange={handleCaptchaChange}/>
 
       <div className='form-input-btnlogin' onClick={handleLogIn} >  
         Prihlásiť sa
