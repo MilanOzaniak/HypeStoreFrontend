@@ -38,6 +38,10 @@ const FormSignup = () => {
 
   function handleCaptchaChange(){
     const data = token.current.value;
+    if (data !== null){
+      setCaptchaVerified(true);
+      console.log(captchaVerified)
+    }
     axios.post( url + '/captcha-verify', data, null)
     .then((response) =>{
       if (response.status === 200) {
