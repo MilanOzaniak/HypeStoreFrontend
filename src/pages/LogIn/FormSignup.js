@@ -38,7 +38,7 @@ const FormSignup = () => {
 
   function handleCaptchaChange(){
     const data = token.current.value;
-    if (data !== null){
+    if (data !== ""){
       setCaptchaVerified(true);
       console.log(captchaVerified)
     }
