@@ -79,7 +79,7 @@ function AddProductPage() {
         headers:{"Authorization" : `Bearer ${token}`}})
         .then((response)=>{
           if(response.status === 200){
-            //history.push('/HypeStoreFrontend/')
+            history.push('/HypeStoreFrontend/')
           }
         })
 

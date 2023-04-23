@@ -12,7 +12,7 @@ const FormSignup = () => {
   const[password, setPassword] = useState('')
   const url = process.env.REACT_APP_API_URL;
   const [errorMessage, setErrorMessage] = useState('');
-  const [captchaVerified, setCaptchaVerified] = useState(true);
+  const [captchaVerified, setCaptchaVerified] = useState(false);
   const captchaRef = useRef(null)
 
   console.log(url);
@@ -30,6 +30,7 @@ const FormSignup = () => {
     event.preventDefault();
     const error = await validateLogin(username, password);
     setErrorMessage(error);
+    
     if(!error){
       history.push('/HypeStoreFrontend/');
       window.location.reload(false);

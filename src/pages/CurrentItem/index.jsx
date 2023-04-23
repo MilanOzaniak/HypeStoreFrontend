@@ -48,7 +48,7 @@ const CurrentItemPage = () =>{
                                 <img src={currentItem.imageNames ? url +"/item/getImage/" + currentItem.imageNames[1] : null} alt="" ></img>  
                                 <img src={currentItem.imageNames ? url +"/item/getImage/" + currentItem.imageNames[2] : null} alt="" ></img>
                                 <img src={currentItem.imageNames ? url +"/item/getImage/" + currentItem.imageNames[3] : null} alt="" ></img>
-                                <img src={currentItem.imageNames ? url +"/item/getImage/" + currentItem.imageNames[3] : null} alt="" ></img>
+                                <img src={currentItem.imageNames ? url +"/item/getImage/" + currentItem.imageNames[4] : null} alt="" ></img>
                              </div>
                                 <div className='img_container'>
                                     <img src={currentItem.imageNames ? url +"/item/getImage/" + currentItem.imageNames[0] : null} alt=""  ></img>
