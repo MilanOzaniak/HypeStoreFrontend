@@ -157,7 +157,7 @@ const Editprofile = () => {
              className='input'
              type='pNumber'
              name='pNumber'
-             placeholder={currentUser.pNumber}
+             placeholder={currentUser.pnumber}
              value={pNumber}
              onChange={pNumberChangeHandler}
             />

@@ -4,27 +4,25 @@ import ImageThree from '../images/slider/topanky.jpg';
 
 export const SliderData = [
     {
-        title: 'NIKE SPORT WEAR',
-        price: 'NEW ARRIVALS',
+        title: 'OBLEČENIE',
+        price: 'NAJNOVŠŠIE PRODUKTY',
         path: '/Clothing',
-        label: 'SHOP NOW',
-        image: ImageOne, 
-        alt: 'House'
-    },
-    {
-        title: 'ADIDAS SPORT WEAR',
-        price: 'NEW ARRIVALS',
-        path: '/Shoes',
-        label: 'SHOP NOW',
+        label: 'NAKUPUJ TU',
         image: ImageTwo, 
-        alt: 'House'
+
     },
     {
-        title: 'PUMA SPORT WEAR',
-        price: 'NEW ARRIVALS',
+        title: 'DOPLNKY',
+        price: 'NAJNOVŠŠIE PRODUKTY',
         path: '/Shoes',
-        label: 'SHOP NOW',
+        label: 'NAKUPUJ TU',
+        image: ImageOne, 
+    },
+    {
+        title: 'TOPÁNKY',
+        price: 'NAJNOVŠŠIE PRODUKTY',
+        path: '/Accessories',
+        label: 'NAKUPUJ TU',
         image: ImageThree, 
-        alt: 'House'
     },
 ];

@@ -1,50 +1,50 @@
 export default function validateCreate(title, price, category, size, description, location, gender) {
-    const error = {
-      title: '',
-      price: '',
-      category: '',
-      size: '',
-      description: '',
-      location: '',
-      gender: ''
-    };
+  const error = {
+    title: '',
+    price: '',
+    category: '',
+    size: '',
+    description: '',
+    location: '',
+    gender: ''
+  };
 
-    let valid = true
+  let valid = true
 
-    if (!title) {
-        error.title =  'Please enter a title!';
-        valid = false;
-      }
-  
-      if (!price) {
-        error.price =  'Please enter a price!';
-        valid = false;
-      }
-  
-      if (!category) {
-        error.category =  'Please enter a category!';
-        valid = false;
-      }
-  
-      if (!size) {
-        error.size =  'Please enter a size!';
-        valid = false;
-      }
-  
-      if (!description) {
-        error.description =  'Please enter a description!';
-        valid = false;
-      }
+  if (!title) {
+      error.title =  'Prosím zadajte názov!';
+      valid = false;
+    }
 
-      if(!location){
-        error.location = 'Please enter a location!';
-        valid = false;
-      }
+    if (!price) {
+      error.price =  'Prosím zadajte cenu!';
+      valid = false;
+    }
 
-      if(!gender){
-        error.gender = 'Please enter a gender!';
-        valid = false;
-      }
+    if (!category) {
+      error.category =  'Prosím zadajte kategóriu!!';
+      valid = false;
+    }
 
-    return {valid, error};
+    if (!size) {
+      error.size =  'Prosím zadajte veľkosť!';
+      valid = false;
+    }
+
+    if (!description) {
+      error.description =  'Prosím zadajte popisok!';
+      valid = false;
+    }
+
+    if(!location){
+      error.location = 'Prosím zadajte lokáciu!';
+      valid = false;
+    }
+
+    if(!gender){
+      error.gender = 'Prosím zadajte pohlavie!';
+      valid = false;
+    }
+
+  return {valid, error};
 }

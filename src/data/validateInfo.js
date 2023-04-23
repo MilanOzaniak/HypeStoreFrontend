@@ -12,7 +12,7 @@ export default function validateInfo(userName, email, pNumber, password, passwor
 
   //userName
     if (userName < 4){
-      error.userName = 'User name needs to be 4 characters or more'
+      error.userName = 'Používateľské meno musi obsahovať viac ako 4 znaky!'
       valid = false;
     }
 
@@ -20,26 +20,26 @@ export default function validateInfo(userName, email, pNumber, password, passwor
 
   //email
     if(!email.includes('@')){
-      error.email = 'wrong format'
+      error.email = 'Zlý format!'
       valid = false
 
     }
 
   //phone number
      if(!/^(?:(?:\+|00)421|0)([1-9][0-9]{8})$/.test(pNumber)){
-      error.pNumber = 'wrong format'
+      error.pNumber = 'Zlý format!'
       valid = false;
     }
 
       //password  
       if (password.length < 6) {
-        error.password = 'Password needs to be 6 characters or more'
+        error.password = 'Heslo musí obsahovať 6 a viac znakov!'
         valid = false;
   
       }
   
       if(password !== password2){
-        error.password2 = "passwords doesnt match"
+        error.password2 = "Heslá sa nezhodujú!"
         valid = false;
   
       }

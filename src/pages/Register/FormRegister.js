@@ -56,16 +56,16 @@ const FormSignup = () => {
   return (
     <div className='form-contentR'>
       <form onSubmit={handleSubmit} className='formR' noValidate>
-        <h1>
-        REGISTER
-        </h1>
+        <h2>
+        REGISTRÁCIA
+        </h2>
         <div className='form-inputs'>
-          <label className='form-label'>User Name</label>
+          <label className='form-label'>Používateľské Meno</label>
           <input
             className='form-input'
             type='text'
             name='username'
-            placeholder='Enter your username'
+            placeholder='Zadaj svoje meno'
             value={userName}
             onChange={nameChangeHandler}
           />
@@ -77,7 +77,7 @@ const FormSignup = () => {
             className='form-input'
             type='email'
             name='email'
-            placeholder='Enter your email'
+            placeholder='Zadaj svoj email'
             value={email}
             onChange={emailChangeHandler}
 
@@ -87,12 +87,12 @@ const FormSignup = () => {
         </div>
 
         <div className='form-inputs'>
-          <label className='form-label'>Phone Number</label>
+          <label className='form-label'>Telefónné číslo</label>
           <input
             className='form-input'
             type='pNumber'
             name='pNumber'
-            placeholder='Enter your phone number'
+            placeholder='Zadaj svoje telefónné číslo'
             value={pnumber}
             onChange={pNumberChangeHandler}
 
@@ -102,24 +102,24 @@ const FormSignup = () => {
         </div>
 
         <div className='form-inputs'>
-          <label className='form-label'>Password</label>
+          <label className='form-label'>Heslo</label>
           <input
             className='form-input'
             type='password'
             name='password'
-            placeholder='Enter your password'
+            placeholder='Zadaj svoje heslo'
             value={password}
             onChange={passwordChangeHandler}
           />
           {errors.password && <p className='errors'>{errors.password}</p>}
         </div>
         <div className='form-inputs'>
-          <label className='form-label'>Confirm Password</label>
+          <label className='form-label'>Potvrď heslo</label>
           <input
             className='form-input'
             type='password'
             name='password2'
-            placeholder='Confirm your password'
+            placeholder='Potvrď svoje heslo'
             value={password2}
             onChange={passwordChangeHandler2}
           />
@@ -127,11 +127,11 @@ const FormSignup = () => {
         </div>
 
         <div className='form-input-btnregister' type='submit' onClick={handleSubmit}>
-          Register
+          Registrácia
         </div>
 
         <span className='form-input-login'>
-          Already have an account? Login <Link to='/HypeStoreFrontend/login'>here.</Link>
+          Už máš účet? Prihlás sa <Link to='/HypeStoreFrontend/login'>tu.</Link>
         </span>
       </form>
     </div>

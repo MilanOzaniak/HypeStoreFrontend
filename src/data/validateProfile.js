@@ -6,11 +6,11 @@ export  function validatePassword(password, password2){
     }
 
     if(password < 4){
-        error.password = 'Password needs to be 6 characters or more'
+        error.password = 'Heslo musí obsahovať 6 a viac znakov!'
     }
 
     if(password !== password2){
-        error.password2 = "passwords doesnt match"
+        error.password2 = "Heslá sa nezhodujú"
         valid = false;
       }
 
@@ -24,7 +24,7 @@ export  function validateEmail(email){
     }
 
     if(!email.includes('@')){
-        error.email = 'wrong format'
+        error.email = 'Zlý format!'
         valid = false
   
     }
@@ -38,7 +38,7 @@ export  function validatePnumber(pNumber){
     }
 
     if(!/^(?:(?:\+|00)421|0)([1-9][0-9]{8})$/.test(pNumber)){
-        error.pNumber = 'wrong format'
+        error.pNumber = 'Zlý format!'
         valid = false;
     }
     return {valid, error};
@@ -52,7 +52,7 @@ export  function validateFacebook(facebook){
     }
 
     if(!/^(https?:\/\/)?(www\.)?facebook\.com\/(profile\.php\?id=\d+|[A-Za-z0-9_.-]+)\/?$/.test(facebook)){
-        error.facebook = 'wrong format';
+        error.facebook = 'Zlý format!';
         valid = false;
     }
     return {valid, error};
@@ -65,7 +65,7 @@ export  function validateInstagram(instagram){
     }
 
     if(!/^(https?:\/\/)?(www\.)?(instagram\.com|instagr\.am)\/[a-zA-Z0-9_]+\/?$/.test(instagram)){
-        error.instagram = 'wrong format';
+        error.instagram = 'Zlý format!';
         valid = false;
     }
     return {valid, error};

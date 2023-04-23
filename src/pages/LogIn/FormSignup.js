@@ -12,7 +12,7 @@ const FormSignup = () => {
   const[password, setPassword] = useState('')
   const url = process.env.REACT_APP_API_URL;
   const [errorMessage, setErrorMessage] = useState('');
-  const [captchaVerified, setCaptchaVerified] = useState(false);
+  const [captchaVerified, setCaptchaVerified] = useState(true);
   const captchaRef = useRef(null)
 
   console.log(url);
@@ -45,6 +45,7 @@ const FormSignup = () => {
         responseToken: token,
       },
     }).then((response) =>{
+      setCaptchaVerified(true);
       if (response.status === 200) {
         return setCaptchaVerified(true);
       }
@@ -54,11 +55,11 @@ const FormSignup = () => {
   async function validateLogin(username, password) {
 
     if (!username || !password) {
-      return 'Please enter both username and password!';
+      return 'Zadajte používateľské meno aj heslo!';
     }
 
     if (!captchaVerified) {
-      return 'Please verify that you are not a robot!';
+      return 'Prosím overte, že nie ste robot!';
     }
 
     try {
@@ -70,11 +71,11 @@ const FormSignup = () => {
       if (response.status === 200) {
         return '';
       } else {
-        return 'Invalid username or password!';
+        return 'Nesprávne užívateľské meno alebo heslo!';
       }
     } 
     catch (error) {
-      return 'Wrong UserName or Password!';
+      return 'Chybné uživateľské meno alebo heslo!';
     }
   }
 
@@ -86,46 +87,46 @@ const FormSignup = () => {
 
   return (
     <div className='form-content'>
-      <div className='formL'>
-        <h2>LOGIN</h2>
-        <div className='form-inputs'>
-          <label className='form-label'>Username</label>
-          <input
-            className='form-input'
-            type='text'
-            name='username'
-            placeholder='Enter your username'
-            value={username}
-            onChange={nameChangeHandler}
-          />
-        </div>
-        <div className='form-inputs'>
-          <label className='form-label'>Password</label>
-          <input
-            className='form-input'
-            type='password'
-            name='password'
-            placeholder='Enter your password'
-            value={password}
-            onChange={passwordChangeHandler}
-          />
-          {errorMessage && <p className='errors'>{errorMessage}</p>}
-        </div>
-
-        <ReCAPTCHA className='captcha'
-          sitekey='6LfLOXElAAAAALmed6NMaHwS3bNzsFX9R73F9M6r'
-          onChange={handleCaptchaChange}
-          ref={captchaRef}/>
-
-        <div className='form-input-btnlogin' onClick={handleLogIn} >  
-          Log in
-        </div>
-        <span className='form-input-login'>
-            You don´t have an account ? Register  
-              <Link to={'/HypeStoreFrontend/register'}> here.</Link>
-        </span>
+    <div className='formL'>
+      <h2>LOGIN</h2>
+      <div className='form-inputs'>
+        <label className='form-label'>Používateľské Meno</label>
+        <input
+          className='form-input'
+          type='text'
+          name='username'
+          placeholder='Zadajte svoje meno'
+          value={username}
+          onChange={nameChangeHandler}
+        />
       </div>
+      <div className='form-inputs'>
+        <label className='form-label'>Heslo</label>
+        <input
+          className='form-input'
+          type='password'
+          name='password'
+          placeholder='Zadajte svoje heslo'
+          value={password}
+          onChange={passwordChangeHandler}
+        />
+        {errorMessage && <p className='errors'>{errorMessage}</p>}
+      </div>
+
+      <ReCAPTCHA className='captcha'
+        sitekey='6LfLOXElAAAAALmed6NMaHwS3bNzsFX9R73F9M6r'
+        onChange={handleCaptchaChange}
+        ref={captchaRef}/>
+
+      <div className='form-input-btnlogin' onClick={handleLogIn} >  
+        Prihlásiť sa
+      </div>
+      <span className='form-input-login'>
+        Nemáte účet? Registrujte sa  
+            <Link to={'/HypeStoreFrontend/register'}> tu.</Link>
+      </span>
     </div>
+  </div>
   );
 };
 
