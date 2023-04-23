@@ -14,6 +14,7 @@ const FormSignup = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [captchaVerified, setCaptchaVerified] = useState(false);
   const [captchaToken, setCaptchaToken] = useState('');
+  const token = useRef("");
 
   console.log(url);
   const nameChangeHandler = event => {
@@ -28,13 +29,6 @@ const FormSignup = () => {
 
   async function handleLogIn (event){
     event.preventDefault();
-    
-    axios.post( url + '/captcha-verify', { token: captchaToken })
-    .then((response) =>{
-      if (response.status === 200) {
-        return setCaptchaVerified(true);
-      }
-    })
     const error = await validateLogin(username, password);
     setErrorMessage(error);
     
@@ -44,9 +38,14 @@ const FormSignup = () => {
     }
   };
 
-  const handleCaptchaChange = (token) => {
-    setCaptchaToken(token);
-    console.log(token);
+  function handleCaptchaChange(){
+    const data = token.current.value;
+    axios.post( url + '/captcha-verify', data)
+    .then((response) =>{
+      if (response.status === 200) {
+        return setCaptchaVerified(true);
+      }
+    })
   };
 
   async function validateLogin(username, password) {
@@ -112,7 +111,8 @@ const FormSignup = () => {
 
       <ReCAPTCHA className='captcha'
         sitekey='6LfLOXElAAAAALmed6NMaHwS3bNzsFX9R73F9M6r'
-        onChange={handleCaptchaChange}/>
+        onChange={handleCaptchaChange}
+        ref={token}/>
 
       <div className='form-input-btnlogin' onClick={handleLogIn} >  
         Prihlásiť sa
