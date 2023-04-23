@@ -38,14 +38,14 @@ const FormSignup = () => {
 
   function handleCaptchaChange(){
     setCaptchaVerified(true);
-    const data = token.current.getValue();
-    console.log(captchaVerified)
-    axios.post( url + '/captcha-verify', data)
-    .then((response) =>{
-      if (response.status === 200) {
-        return setCaptchaVerified(true);
-      }
-    })
+    //const data = token.current.getValue();
+    //console.log(captchaVerified)
+    //axios.post( url + '/captcha-verify', data)
+    //.then((response) =>{
+    //  if (response.status === 200) {
+    //    return setCaptchaVerified(true);
+    //  }
+    //})
   };
 
   async function validateLogin(username, password) {
