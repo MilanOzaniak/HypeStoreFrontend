@@ -13,10 +13,8 @@ const FormSignup = () => {
   const url = process.env.REACT_APP_API_URL;
   const [errorMessage, setErrorMessage] = useState('');
   const [captchaVerified, setCaptchaVerified] = useState(false);
-  const [captchaToken, setCaptchaToken] = useState('');
   const token = useRef("");
 
-  console.log(url);
   const nameChangeHandler = event => {
       setUserName(event.target.value)
   }
