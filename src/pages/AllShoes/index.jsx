@@ -11,8 +11,7 @@ import { FaStar, FaTrash, FaEdit, FaBookmark } from 'react-icons/fa';
 
 
 const ShoesPage = () => {
-  const [resultsFound, setResultsFound] = useState(true);
-  const [searchInput, setSearchInput] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
   const [item, setItem] = useState([]);
   const url = process.env.REACT_APP_API_URL;
   const [checkedLowest, setCheckedLowest ] = useState(false);
@@ -22,6 +21,7 @@ const ShoesPage = () => {
   const size = useRef("")
   const locality = useRef("")
   const gender = useRef("")
+  const search = useRef("")
 
   const handleMouseOver = (i) => {
     var element = document.getElementById(i);
@@ -50,6 +50,24 @@ const ShoesPage = () => {
       console.log(response.data);
     });
   }, []);
+
+
+  function handleInputChange() {
+    const value = search.current.value;
+    console.log(value) 
+    if(value === ""){
+      axios.get(url + "/item/getAllShoes").then((response) => {
+        setItem(response.data);
+        console.log(response.data);
+      });
+    } 
+    else{
+      const filteredItems = item.filter(item => item.title.toLowerCase().includes(value.toLowerCase()));
+      setItem(filteredItems)
+    }
+  }
+
+
 
   const handleChnangeTick = (event) =>{
     const value = event.target.value;
@@ -141,7 +159,9 @@ const ShoesPage = () => {
       {show && 
     <div className='Filterwrap'>
       <div class="search-filter">
-					<input type="search" placeholder="Search..."/>
+					<input type="search" placeholder="Search..."
+                  ref={search}
+                  onChange={handleInputChange}/>
 				</div>
         <div className='category'>
           <div className="inputfield_select">
